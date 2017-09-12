@@ -1,0 +1,185 @@
+ .navbar-header{
+  height: 90px;
+}
+.dropdown:hover >.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -1px;
+}
+.dropdown-submenu > a:after {
+  border-color: transparent transparent transparent #333;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  content: " ";
+  display: block;
+  float: right;  
+  height: 0;     
+  margin-right: -10px;
+  margin-top: 5px;
+  width: 0;
+}
+body{
+  background-color: #F0F5F9;
+}
+.categories{
+  margin: 10px 20px;
+}
+.category-row{
+  width: 90%;
+  margin: 2% auto;
+  display: flex;
+  flex-direction: row;
+  flex-flow: row wrap;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.category{
+  width: 300px;
+  height: 100%;
+  max-height: 350px;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+  text-align: center;
+  margin: 25px;
+  position: relative;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+.category:hover .category-discription{
+  transform: translateY(0px);
+  transition: transform 300ms ease-out;
+}
+.category:hover .category-image{
+  filter: blur(5px);
+  transform: scale(1.2);
+  transition: all 200ms ease-out;
+}
+.category-image{
+  width: 250px;
+  display: inline-block;
+  overflow: hidden;
+  transform: scale(1);
+  filter: blur(0px);
+  transition: all 200ms ease-out;
+}
+.category-discription{
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 10px;
+  background: rgba(4,7,14,.8);
+  font-family: Ubuntu, Arial, sans-serif;
+  font-size: 1.3rem;
+  color: white;
+  transform: translateY(150%);
+  transition: transform 300ms ease-in;
+}
+.category-title{
+  font-family: 'Sacramento', cursive;
+  font-size: 2rem;
+  color: blue;
+}
+.category-info{
+  padding-top: 10px;
+  font-size: .9rem;
+  color: white;
+  font-weight: 100;
+  text-align: center;
+}
+.footer{
+  background-color: #1E2022;
+  color: #F0F5F9;
+  padding: 40px;
+  text-align: center;
+}
+.footer ul{
+  list-style: none;
+  padding: 0px;
+}
+.fa {
+  padding: 10px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+  margin: 10px;
+}
+.fa:hover {
+  opacity: 0.7;
+}
+.fa-facebook {
+  background: #3B5998;
+  color: #F0F5F9;
+}
+.fa-twitter {
+  background: #55ACEE;
+  color: #F0F5F9;
+}
+.fa-google-plus{
+  background: #d34836;
+  color: #F0F5F9;
+}
+
+.category-image1{
+  padding: 10px;
+  width: 100%;
+}
+.category-image2{
+  padding: 20px;
+  width: 60%;
+}
+.category-image3{
+  padding-bottom: : 20px;
+  width: 100%;
+}
+.lowerLine{
+  border-width: 1px; 
+  border-color: black;
+}
+.tab-pane{
+  padding: 20px;
+}
+.data{
+  text-align: left;
+}
+.upperLine{
+  border-width: 2px; 
+  border-color: black;
+}
+.workAt{
+
+  padding-top: 20px;
+}
+.footer > div > [class*='col-sm-3']:before{
+  background: white;
+  bottom: 0;
+  content: " ";
+  left: 0;
+  position: absolute;
+  width: 1px;
+  top: 0;
+  height: 100%;
+  min-height: 100%;
+}
+.footer > div > [class*='col-sm-3']first-child:before{
+  display: none;
+  }
+.press{
+  color: orange;
+}
+
+.footer > div > [class*='col-sm-3']>a:hover{
+  color: lightblue;
+}
+.footer > div > [class*='col-sm-3']>a{
+  color: white;
+}
