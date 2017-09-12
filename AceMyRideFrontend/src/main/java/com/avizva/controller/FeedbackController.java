@@ -1,5 +1,6 @@
 package com.avizva.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,11 +9,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.avizva.model.Feedback;
 import com.avizva.service.FeedbackService;
+import com.avizva.service.MailService;
 
 @Controller
 public class FeedbackController {
 
+	@Autowired
 	private FeedbackService feedbackService;
+
+	@Autowired
+	private MailService mailService;
 
 	@RequestMapping(value = "saveFeedback", method = RequestMethod.POST)
 	public ModelAndView saveFeedback(@ModelAttribute Feedback feedback) {
@@ -20,6 +26,8 @@ public class FeedbackController {
 		if (savedFeedback == null) {
 			return new ModelAndView("contactUs").addObject("result", "failure");
 		}
+		mailService.sendMail(feedback.getEmail(), "Thanks for submitting your feedback",
+				"Thanks for submitting your feedback. Our customer care executive will connect with you within 24 hours.");
 		return new ModelAndView("contactUs").addObject("result", "success");
 	}
 
