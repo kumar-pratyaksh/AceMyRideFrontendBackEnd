@@ -7,14 +7,14 @@ import javax.sql.DataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@ComponentScan("com.avizva")
 @Configuration
 @EnableTransactionManagement
 public class ApplicationContextConfig {
@@ -45,7 +45,7 @@ public class ApplicationContextConfig {
 	}
 
 	@Autowired
-	@Bean(name = "sessionFactory")
+	@Bean
 	public SessionFactory getSessionFactory(DataSource dataSource) {
 
 		LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
@@ -55,10 +55,26 @@ public class ApplicationContextConfig {
 	}
 
 	@Autowired
-	@Bean(name = "transactionManager")
+	@Bean
 	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {
 		HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactory);
 		return transactionManager;
+	}
+
+	@Bean
+	public JavaMailSender getJavaMailSender() {
+		System.out.println("creating java bean of mailer");
+		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+		mailSender.setHost("smtp.gmail.com");
+		mailSender.setPort(587);
+		mailSender.setUsername("contact.acemyride@gmail.com");
+		mailSender.setPassword("#acemyride2017");
+		Properties properties = mailSender.getJavaMailProperties();
+		properties.put("mail.transport.protocol", "smtp");
+		properties.put("mail.smtp.auth", "true");
+		properties.put("mail.smtp.starttls.enable", "true");
+		properties.put("mail.debug", "false");
+		return mailSender;
 	}
 
 }
