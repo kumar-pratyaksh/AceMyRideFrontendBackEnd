@@ -1,0 +1,12 @@
+.metadata
+RemoteSystemsTempFiles/**
+Servers/**
+AceMyRideFrontend/target/**
+AceMyRideBackend/target/**
+AceMyRideBackend/.classpath
+AceMyRideBackend/.project
+AceMyRideBackend/.settings/**
+AceMyRideFrontend/.classpath
+AceMyRideFrontend/.project
+AceMyRideFrontend/.settings/**
+
