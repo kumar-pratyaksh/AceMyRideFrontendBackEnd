@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.avizva.model.User;
+import com.avizva.service.MailService;
 import com.avizva.service.UserService;
 
 @Controller
@@ -15,6 +16,9 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private MailService mailService;
 
 	@RequestMapping("/registerUser")
 	public ModelAndView showRegister() {
@@ -27,6 +31,8 @@ public class UserController {
 		if (savedUser == null) {
 			return new ModelAndView("error");
 		}
+		mailService.sendMail(savedUser.getEmail(), "Thanks for registration",
+				"Thank you for registring on our site. We look forward to serve you in the future");
 		return new ModelAndView("login").addObject("user", savedUser);
 
 	}
