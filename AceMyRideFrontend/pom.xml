@@ -3,6 +3,9 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.avizva</groupId>
   <artifactId>AceMyRideFrontend</artifactId>
+  <properties>
+  	<failOnMissingWebXml>false</failOnMissingWebXml>
+  </properties>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
   <name>AceMyRideFrontend Maven Webapp</name>
@@ -14,24 +17,31 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
-    <dependency>
-    	<groupId>com.avizva</groupId>
-    	<artifactId>AceMyRideBackend</artifactId>
-    	<version>0.0.1-SNAPSHOT</version>
-    </dependency>
-    <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
 <dependency>
     <groupId>org.springframework</groupId>
     <artifactId>spring-webmvc</artifactId>
     <version>4.3.9.RELEASE</version>
 </dependency>
-    <!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
 <dependency>
     <groupId>org.springframework</groupId>
     <artifactId>spring-web</artifactId>
     <version>4.3.9.RELEASE</version>
 </dependency>
-    
+
+
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>jstl</artifactId>
+    <version>1.2</version>
+</dependency>
+
+
+
+  	<dependency>
+  		<groupId>com.avizva</groupId>
+  		<artifactId>AceMyRideBackend</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
   </dependencies>
   <build>
     <finalName>AceMyRideFrontend</finalName>
