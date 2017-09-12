@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -66,6 +67,15 @@ public class UserDaoImpl implements UserDao {
 	public List<User> viewAll() {
 		Session session = sessionFactory.getCurrentSession();
 		return session.createCriteria(User.class).list();
+	}
+
+	@Transactional
+	public User view(String email) {
+		Session session = sessionFactory.getCurrentSession();
+		List<User> users = session.createCriteria(User.class).add(Restrictions.eq("email", email)).list();
+		if (users.isEmpty())
+			return null;
+		return users.get(0);
 	}
 
 }
