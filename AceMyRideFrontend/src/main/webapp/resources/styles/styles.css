@@ -183,3 +183,84 @@ body{
 .footer > div > [class*='col-sm-3']>a{
   color: white;
 }
+
+
+.glyphicon-map-marker{
+	font-size: 50px;
+  
+  text-align:center;
+  color:white;
+}
+
+.glyphicon-earphone{
+	font-size: 50px;
+  
+  text-align:center;
+  color:white;
+}
+.glyphicon-envelope{
+	font-size: 50px;
+  
+  text-align:center;
+  color:white;
+}
+
+
+i
+{
+
+ background-color: #77B4B5;
+ border-radius: 80%;
+ padding:15px;
+ 
+}
+
+#map {
+        height: 400px;
+        width: 100%;
+       }
+
+ 
+ .details{
+ 	background-color:#126364;
+ }
+ 
+ h11{
+ 	text-align: center;
+ 	  color:white; 
+ 	  font-size:40px;
+ }
+ 
+ h12{
+ 	text-align: center;
+ 	  color:white; 
+ 	  font-size:22px;
+ }
+ 
+ h13{
+ 	font-family:'GrundschriftRegular'; 
+ 	font-size: 50px; 
+ 	color:#18376F;
+ }
+ 
+ p11
+ {
+ 	text-align: center;  
+ 	color:white; 
+ 	font-size:18px;
+ }
+ 
+ p12{
+ 	text-align: center;  
+ 	color:white; 
+ 	font-size:15px;
+ }
+ 
+ p13{
+ 	font-size:20px; 
+ 	color:#898A8D;
+ }
+ 
+ .saving{
+ 	background-color:#8C8E97;
+ }

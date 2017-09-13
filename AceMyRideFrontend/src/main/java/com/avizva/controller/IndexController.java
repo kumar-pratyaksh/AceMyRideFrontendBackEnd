@@ -16,5 +16,10 @@ public class IndexController {
 	public ModelAndView showAboutUs() {
 		return new ModelAndView("aboutUs");
 	}
+	
+	@RequestMapping("/contactUs")
+	public ModelAndView showContactUs() {
+		return new ModelAndView("contactUs");
+	}
 
 }

@@ -68,9 +68,4 @@ public class Feedback {
 		this.createdAt = createdAt;
 	}
 
-	@PrePersist
-	public void setCreatedAt() {
-		this.createdAt = new Date();
-	}
-
 }
