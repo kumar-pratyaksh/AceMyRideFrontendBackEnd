@@ -51,7 +51,6 @@ public class UserController {
 	public void initBinder(WebDataBinder binder) {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		binder.registerCustomEditor(Date.class, "birthDate", new CustomDateEditor(format, false));
-
 	}
 
 }

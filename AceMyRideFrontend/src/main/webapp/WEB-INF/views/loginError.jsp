@@ -45,27 +45,28 @@ padding: 15px;
 
     <h2>Create Account</h2><br>
     
-    <form class="form-horizontal" action="register" onsubmit="return ValidationSignup()" method="POST">
+    <form class="form-horizontal" action="" onsubmit="return ValidationSignup()">
     <div><label>Username</label>
-    <input id="username" type="text" name="name" class="form-control" placeholder="Enter username"></div><br>
+    <input id="username" type="text" name="username" class="form-control" placeholder="Enter username"></div><br>
     <div><label>Password</label>
-    <input id="password" type="password" name="password" class="form-control" placeholder="Enter password"></div><br>
+    <input id="password" type="text" name="password" class="form-control" placeholder="Enter password"></div><br>
     <div><label>Confirm Password</label>
-    <input id="confirmPassword" type="password" class="form-control" placeholder="Re-enter password"></div><br>
+    <input id="confirmPassword" type="password" name="confirmPassword" class="form-control" placeholder="Re-enter password"></div><br>
     <div><label>Email</label>
     <input id="email" type="email" name="email" placeholder="Enter email" class="form-control"></div><br>
     <div><label>Contact</label>
     <input id="contact" type="text" name="contact" placeholder="Enter contact number" class="form-control"></div><br>
 
     <div><label class="control-label" for="date">Date Of Birth</label>
-        <input class="form-control" id="date" name="birthDate" placeholder="DD/MM/YYYY" type="date"/></div><br>
+        <input class="form-control" id="date" name="dob" placeholder="DD/MM/YYYY" type="text"/></div><br>
     
     <div><label>Select your security question</label>
     
-    <select style="width:100%; height: 32px" name="securityQuestionId">
-		<c:forEach items="${securityQuestions}" var="question" varStatus="loop">
-			<option  value="${loop.index }">${question}</option>
-		</c:forEach>
+    <select style="width:100%; height: 32px">
+			<option name="securityQuestion" value="motherName">What is your mother's name?</option>
+			<option name="securityQuestion" value="timepass">What do you do when idle?</option>
+			<option name="securityQuestion" value="friend">What was the name of your first friend?</option>
+			<option name="securityQuestion" value="birthplace">What was the name of your birthplace?</option>
 			
 	</select>
     </div><br>
@@ -95,6 +96,7 @@ padding: 15px;
 
     <h2>Login</h2><br>
     
+    <h style="color:red">Invalid Credentials</h>
     <form class="form-horizontal" action="loginSubmit" onsubmit="return ValidationLogin()" method="post">
     <div><label>Email</label>
     <input id="email1" type="email" name="email" class="form-control" placeholder="Enter email"></div><br>
