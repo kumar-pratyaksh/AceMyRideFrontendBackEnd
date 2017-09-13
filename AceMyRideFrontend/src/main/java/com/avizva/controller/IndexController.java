@@ -4,6 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.avizva.pojo.SecurityQuestions;
+
 @Controller
 public class IndexController {
 
@@ -24,6 +26,6 @@ public class IndexController {
 
 	@RequestMapping("/login")
 	public ModelAndView showLogin() {
-		return new ModelAndView("login");
+		return new ModelAndView("login").addObject("securityQuestions", SecurityQuestions.securityQuestions);
 	}
 }
