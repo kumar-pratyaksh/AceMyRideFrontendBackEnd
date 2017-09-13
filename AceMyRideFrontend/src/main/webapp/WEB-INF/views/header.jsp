@@ -65,7 +65,16 @@
 
   
 <ul class="nav navbar-nav navbar-right">
-      <li><a href="login"><span class="glyphicon glyphicon-user"></span> Login/Register</a></li>
+      <li>
+      <c:if test="${empty userId}">
+      	<a href="login"><span class="glyphicon glyphicon-user"></span> Login/Register</a>
+      	</c:if>
+      	
+      	<c:if test="${not empty userId}">
+      		<p>Hi,<a href="#"> <c:out value="${userName}"></c:out></a></p> 
+      		<a href="logout"><span class="glyphicon glyphicon-user"></span> Logout</a>
+      	</c:if>
+      </li>
     </ul>
     </div>
 
