@@ -1,9 +1,11 @@
 <%@include file="header.jsp" %>
+<script src="${script}/scripts.js"></script>
+<link rel="stylesheet" type="text/css" href="${style}/contact.css">
 
 <div class="container-fluid details" >
 	
 		<div class="row text-center">
-			<h11 >GET IN TOUCH</h11>
+			<h1 >GET IN TOUCH</h1>
 		</div>
 
 
@@ -13,20 +15,21 @@
 			
 			<div class="text-center">
 				<i class="glyphicon glyphicon-map-marker"></i>
-				<br><br>
+				
+			<br><br>
+			<h2 >ADDRESS</h2><br><br>
 			
-			<h12 >ADDRESS</h12>	<br><br>
-			<p11>Northern Division Office</p11><br><br>
+			<p1>Northern Division Office</p1><br><br>
 
-			<p12 >16,DLF Cybercity</p12><br>
-			<p12 >Sector 24,Gurugram</p12><br>
-			<p12 >Haryana-122002</p12><br><br><br>
+			<p2 >16,DLF Cybercity</p2><br>
+			<p2 >Sector 24,Gurugram</p2><br>
+			<p2 >Haryana-122002</p2><br><br><br>
 
-			<p11 >Eastern Division Office</p11><br><br>
+			<p1 >Eastern Division Office</p1><br><br>
 
-			<p12 >14,G-Block,Sector 1</p12><br>
-			<p12 >Salt Lake City,Kolkata</p12><br>
-			<p12 >West Bengal-700073</p12><br><br>
+			<p2 >14,G-Block,Sector 1</p2><br>
+			<p2 >Salt Lake City,Kolkata</p2><br>
+			<p2 >West Bengal-700073</p2><br><br>
 			</div>
 			</div>
 
@@ -36,15 +39,15 @@
 			<div class="text-center">
 				<i class="glyphicon glyphicon-earphone"></i>
 			<br><br>
-			<h12 >PHONE</h12>	<br><br>
-			<p11 >Northern Division Office</p11><br><br>
-			<p12 >+91 124 4831550</p12><br><br><br>
+			<h2 >PHONE</h2>	<br><br>
+			<p1 >Northern Division Office</p1><br><br>
+			<p2 >+91 124 4831550</p2><br><br><br>
 
-			<p11 >Eastern Division Office</p11><br><br>
-			<p12 >+91 033 2657543</p12><br><br><br>
+			<p1 >Eastern Division Office</p1><br><br>
+			<p2 >+91 033 2657543</p2><br><br><br>
 
-			<p11 >AceMyRide Service Department</p11><br><br>
-			<p12 >+91 124 4852206</p12><br><br><br>
+			<p1 >AceMyRide Service Department</p1><br><br>
+			<p2 >+91 124 4852206</p2><br><br><br>
 
 			
 			</div>
@@ -57,15 +60,15 @@
 				<i class="glyphicon glyphicon-envelope"></i>
 				<br><br>
 			
-			<h12 >EMAIL</h12>	<br><br>
-			<p11>Product Enquiry</p11><br><br>
-			<p12 >contact.acemyride@gmail.com</p12><br><br><br>
+			<h2 >EMAIL</h2>	<br><br>
+			<p1>Product Enquiry</p1><br><br>
+			<p2 >contact.acemyride@gmail.com</p2><br><br><br>
 
-			<p11 >Service Call</p11><br><br>
-			<p12 >service@acemyride.com</p12><br><br><br>
+			<p1 >Service Call</p1><br><br>
+			<p2 >service@acemyride.com</p2><br><br><br>
 
-			<p11>Employment Opportunities</p11><br><br>
-			<p12 >careers@acemyride.com</p12><br><br><br>
+			<p1>Employment Opportunities</p1><br><br>
+			<p2 >careers@acemyride.com</p2><br><br><br>
 
 			
 			</div>
@@ -85,10 +88,10 @@
 				<div class="col-md-4">
 
 				
-					<h13>Message Us</h13>
+					<h3>Message Us</h3>
 					<br>
-					<p13 >Your questions and comments are important to us. Enter your details and message alongside
-																and the our team will get back to you shortly. </p13>
+					<p3 >Your questions and comments are important to us. Enter your details and message alongside
+																and the our team will get back to you shortly. </p3>
 				
 				</div>
 				<div class="col-md-1"></div>

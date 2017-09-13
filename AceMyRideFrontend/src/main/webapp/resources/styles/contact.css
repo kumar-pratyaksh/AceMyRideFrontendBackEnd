@@ -1,0 +1,84 @@
+.glyphicon-map-marker{
+	font-size: 50px;
+  
+  text-align:center;
+  color:white;
+}
+
+.glyphicon-earphone{
+	font-size: 50px;
+  
+  text-align:center;
+  color:white;
+}
+.glyphicon-envelope{
+	font-size: 50px;
+  
+  text-align:center;
+  color:white;
+}
+
+
+i
+{
+
+ background-color: #77B4B5;
+ border-radius: 80%;
+ padding:15px;
+ 
+}
+
+#map {
+        height: 400px;
+        width: 100%;
+       }
+
+ 
+ .details{
+ 	background-color:#126364;
+ }
+ 
+ h1{
+ 	text-align: center;
+ 	  color:white; 
+ 	  font-size:40px;
+ }
+ 
+ h2{
+ 	text-align: center;
+ 	  color:white; 
+ 	  font-size:22px;
+ 	 
+ }
+ 
+ h3{
+ 	font-family:'GrundschriftRegular'; 
+ 	font-size: 50px; 
+ 	color:#18376F;
+ }
+ 
+ p1
+ {
+ 	text-align: center;  
+ 	color:white; 
+ 	font-size:18px;
+ }
+ 
+ p2{
+ 	text-align: center;  
+ 	color:white; 
+ 	font-size:15px;
+ }
+ 
+ p3{
+ 	font-size:20px; 
+ 	color:#898A8D;
+ }
+ 
+ .saving{
+ 	background-color:#8C8E97;
+ }
+
+ .h2{
+ 	margin-bottom:2em;
+ }

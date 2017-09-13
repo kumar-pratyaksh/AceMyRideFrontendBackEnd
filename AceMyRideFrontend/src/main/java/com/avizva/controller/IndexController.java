@@ -22,4 +22,8 @@ public class IndexController {
 		return new ModelAndView("contactUs");
 	}
 
+	@RequestMapping("/login")
+	public ModelAndView showLogin() {
+		return new ModelAndView("login");
+	}
 }

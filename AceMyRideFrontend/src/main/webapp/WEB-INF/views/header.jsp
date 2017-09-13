@@ -9,13 +9,12 @@
 	<c:url var="style" value="/resources/styles"></c:url>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/grundschrift" type="text/css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	
-	<script src="${script}/scripts.js"></script>
+	
 	<link rel="icon" href="${image}/favicon.ico">
-	<link rel="stylesheet" type="text/css" href="${style}/styles.css"></head>
+	<link rel="stylesheet" type="text/css" href="${style}/styles.css">
 </head>
 <body>
 
@@ -66,8 +65,7 @@
 
   
 <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href="login"><span class="glyphicon glyphicon-user"></span> Login/Register</a></li>
     </ul>
     </div>
 
