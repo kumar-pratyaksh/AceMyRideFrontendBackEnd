@@ -3,7 +3,6 @@ package com.avizva.controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.mail.Session;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
