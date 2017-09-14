@@ -17,5 +17,9 @@ public interface UserDao {
 	public User view(String email);
 
 	public List<User> viewAll();
+	
+	public User deactivate(int id);
+	
+	public User reactivate(int id);
 
 }

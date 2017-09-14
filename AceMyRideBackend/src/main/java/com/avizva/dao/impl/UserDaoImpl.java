@@ -77,6 +77,39 @@ public class UserDaoImpl implements UserDao {
 			return null;
 		return users.get(0);
 	}
+	@Transactional
+	public User deactivate(int id) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		try {
+				User user = session.get(User.class, id);
+				if(user!=null){
+					user.setEnabled(false);
+				}
+				return user;
+			} catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			}
+		
+	}
+	
+	@Transactional
+	public User reactivate(int id) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		try {
+				User user = session.get(User.class, id);
+				if(user!=null){
+					user.setEnabled(true);
+				}
+				return user;
+			} catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			}
+		
+	}
 
 
 }

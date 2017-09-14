@@ -38,4 +38,11 @@ public class UserServiceImpl implements UserService {
 		return userDao.view(email);
 	}
 
+	public boolean deactivateUser(int id) {
+		User deactivateUser = userDao.delete(id);
+		if (deactivateUser == null)
+			return false;
+		return true;
+	}
+
 }
