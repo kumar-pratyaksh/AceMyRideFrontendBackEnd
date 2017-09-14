@@ -38,6 +38,7 @@ public class LoginController {
 	}
 	
 	private void setUserDetails(User user,HttpSession session){
+		session.setAttribute("isLoggedIn", true);
 		session.setAttribute("userId", user.getId());
 		session.setAttribute("userEmail", user.getEmail());
 		session.setAttribute("userName", user.getName());

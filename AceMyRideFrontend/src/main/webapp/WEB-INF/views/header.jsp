@@ -66,11 +66,11 @@
   
 <ul class="nav navbar-nav navbar-right">
       <li>
-      <c:if test="${empty userId}">
+      <c:if test="${empty isLoggedIn}">
       	<a href="login"><span class="glyphicon glyphicon-user"></span> Login/Register</a>
       	</c:if>
       	
-      	<c:if test="${not empty userId}">
+      	<c:if test="${isLoggedIn}">
       		<p>Hi,<a href="#"> <c:out value="${userName}"></c:out></a></p> 
       		<a href="logout"><span class="glyphicon glyphicon-user"></span> Logout</a>
       	</c:if>
