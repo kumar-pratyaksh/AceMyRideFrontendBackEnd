@@ -3,6 +3,8 @@ package com.avizva.controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.mail.Session;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +53,32 @@ public class UserController {
 	public void initBinder(WebDataBinder binder) {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		binder.registerCustomEditor(Date.class, "birthDate", new CustomDateEditor(format, false));
+	}
+	
+	@RequestMapping("/deactivateUser")
+	public ModelAndView showDeactication() {
+		return new ModelAndView("deactivate");
+	}
+	
+	@RequestMapping(value = "/deactivate")
+	public ModelAndView deactivation(HttpSession session)
+	{
+		if(session.getAttribute("isLoggedIn")==null)
+		{
+			return new ModelAndView("redirect:/login");
+		}
+		else
+		{
+			int id=(Integer) session.getAttribute("userId");
+			System.out.println(id);
+			boolean flag=userService.deactivateUser(id);
+			if (!flag) {
+				return new ModelAndView("error");
+			}
+			else
+				return new ModelAndView("redirect:/logout");
+		}
+		
 	}
 
 }

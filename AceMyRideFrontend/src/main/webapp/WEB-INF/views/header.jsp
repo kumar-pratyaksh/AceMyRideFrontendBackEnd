@@ -71,7 +71,7 @@
       	</c:if>
       	
       	<c:if test="${isLoggedIn}">
-      		<p>Hi,<a href="#"> <c:out value="${userName}"></c:out></a></p> 
+      		<p>Hi,<a href="profile"> <c:out value="${userName}"></c:out></a></p> 
       		<a href="logout"><span class="glyphicon glyphicon-user"></span> Logout</a>
       	</c:if>
       </li>

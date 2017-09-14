@@ -24,6 +24,7 @@ public class LoginAuthServiceImpl implements LoginAuthService{
 	public User authenticate(String email,String password)
 	{
 		User user=userDao.view(email);
+		userDao.reactivate(user.getId());
 		return user;
 			
 	}

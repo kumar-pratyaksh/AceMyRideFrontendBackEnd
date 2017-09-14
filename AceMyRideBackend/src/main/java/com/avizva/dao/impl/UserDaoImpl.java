@@ -2,6 +2,9 @@ package com.avizva.dao.impl;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -76,6 +79,39 @@ public class UserDaoImpl implements UserDao {
 		if (users.isEmpty())
 			return null;
 		return users.get(0);
+	}
+	@Transactional
+	public User deactivate(int id) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		try {
+				User user = session.get(User.class, id);
+				if(user!=null){
+					user.setEnabled(false);
+				}
+				return user;
+			} catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			}
+		
+	}
+	
+	@Transactional
+	public User reactivate(int id) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		try {
+				User user = session.get(User.class, id);
+				if(user!=null){
+					user.setEnabled(true);
+				}
+				return user;
+			} catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			}
+		
 	}
 
 

@@ -14,4 +14,5 @@ public interface UserService {
 
 	public User getUser(String email);
 
+	public boolean deactivateUser(int id);
 }
