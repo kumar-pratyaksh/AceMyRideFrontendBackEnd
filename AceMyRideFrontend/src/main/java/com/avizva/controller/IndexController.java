@@ -29,8 +29,5 @@ public class IndexController {
 		return new ModelAndView("login").addObject("securityQuestions", SecurityQuestions.securityQuestions);
 	}
 	
-	@RequestMapping("/profile")
-	public ModelAndView showProfile() {
-		return new ModelAndView("profile");
-	}
+	
 }

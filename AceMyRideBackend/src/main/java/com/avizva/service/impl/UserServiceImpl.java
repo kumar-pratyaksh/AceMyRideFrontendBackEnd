@@ -20,6 +20,7 @@ public class UserServiceImpl implements UserService {
 
 	public User updateUser(User user) {
 		User updatedUser = userDao.update(user);
+		updatedUser=userDao.userWithAddresses(updatedUser);
 		return updatedUser;
 	}
 
