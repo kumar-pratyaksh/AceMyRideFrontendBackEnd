@@ -2,6 +2,12 @@ package com.avizva.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+/**
+ * Application initializer class
+ * 
+ * @author Pratyaksh.Kumar
+ *
+ */
 public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	@Override

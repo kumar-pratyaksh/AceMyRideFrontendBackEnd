@@ -13,20 +13,33 @@ import org.springframework.web.servlet.ModelAndView;
 import com.avizva.model.User;
 import com.avizva.service.LoginAuthService;
 
+/**
+ * Controller to handle user login logout requests
+ * 
+ * @author Prateek
+ *
+ */
 @Controller
 public class LoginController {
 	
 	@Autowired
 	private LoginAuthService loginAuthService;
 	
+	/**
+	 * Method to handle login requests
+	 * 
+	 * @param session
+	 * @param email
+	 * @param password
+	 * @return The appropriate view
+	 */
 	@RequestMapping(value = "/loginSubmit", method = RequestMethod.POST)
 	public ModelAndView performLogin(HttpSession session,@RequestParam("email")String email,@RequestParam("password")String password) {
 		User user=loginAuthService.authenticate(email,password);
-		
 		if(user!=null)
 		{
 			setUserDetails(user,session);
-			return new ModelAndView("home");
+			return new ModelAndView("redirect:/");
 		}
 		else
 			return new ModelAndView("loginError");
@@ -45,7 +58,12 @@ public class LoginController {
 
 	}
 	
-	
+	/**
+	 * Method to handle logout request
+	 * 
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping("/logout")
 	public ModelAndView performLogout(HttpSession session)
 	{

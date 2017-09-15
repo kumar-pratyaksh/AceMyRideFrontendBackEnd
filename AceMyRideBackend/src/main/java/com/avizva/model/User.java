@@ -18,6 +18,12 @@ import javax.validation.constraints.NotEmpty;
 
 import com.avizva.pojo.UserType;
 
+/**
+ * The User address class
+ * 
+ * @author Pratyaksh Kumar
+ *
+ */
 @Entity
 public class User {
 

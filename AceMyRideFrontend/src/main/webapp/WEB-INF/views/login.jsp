@@ -27,6 +27,14 @@ padding: 15px;
 }
 </style>
 
+	<c:if test="${not empty result }">
+		<c:if test="${result == 'success'}">
+			<div class="alert alert-success" role="success">
+				${message}
+			</div>
+		</c:if>
+	</c:if>
+
 <div class="text-center">
    <a href="#"><img src="${image}/logo.png"  style="height: 70px;width:10%;"></a>
    </div>
@@ -36,9 +44,9 @@ padding: 15px;
 
 
 
-<div class="container">
+<div class="container-fluid">
 <div class="row">
-   <div class="col-sm-4 col-md-offset-1" >
+   <div class="col-sm-4 col-sm-offset-1" >
 
    
    		<div class="border">
@@ -46,7 +54,7 @@ padding: 15px;
     <h2>Create Account</h2><br>
     
     <form class="form-horizontal" action="register" onsubmit="return ValidationSignup()" method="POST">
-    <div><label>Username</label>
+    <div><label>User Name</label>
     <input id="username" type="text" name="name" class="form-control" placeholder="Enter username"></div><br>
     <div><label>Password</label>
     <input id="password" type="password" name="password" class="form-control" placeholder="Enter password"></div><br>
@@ -58,7 +66,7 @@ padding: 15px;
     <input id="contact" type="text" name="contact" placeholder="Enter contact number" class="form-control"></div><br>
 
     <div><label class="control-label" for="date">Date Of Birth</label>
-        <input class="form-control" id="date" name="birthDate" placeholder="DD/MM/YYYY" type="date"/></div><br>
+        <input class="form-control" id="date" name="birthDate" placeholder="DD/MM/YYYY" type="text"/></div><br>
     
     <div><label>Select your security question</label>
     
@@ -88,7 +96,7 @@ padding: 15px;
 
 
 
-     <div class="col-sm-4 col-md-offset-2" >
+     <div class="col-sm-4 col-sm-offset-2" >
 
    
    		<div class="border">
@@ -109,7 +117,7 @@ padding: 15px;
     <br>
 
     <div class="already">Forgot Password?
-    <a href="#">Click here</a>
+    <a href="forgotPassword">Click here</a>
     </div>
     
     </div></div>
@@ -127,13 +135,14 @@ padding: 15px;
 
 
 	$(document).ready(function(){
-      var date_input=$('input[name="dob"]'); //our date input has the name "date"
-      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var date_input=$('input[name="birthDate"]'); //our date input has the name "date"
       var options={
         format: 'dd/mm/yyyy',
-        container: container,
         todayHighlight: true,
         autoclose: true,
+        changeMonth: true,
+        changeYear: true,
+        yearRange: "-120:+0"
       };
       date_input.datepicker(options);
     })

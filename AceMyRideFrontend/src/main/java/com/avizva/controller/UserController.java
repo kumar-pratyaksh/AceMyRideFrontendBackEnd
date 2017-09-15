@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.avizva.model.User;
+import com.avizva.pojo.SecurityQuestions;
 import com.avizva.service.MailService;
 import com.avizva.service.UserService;
 
@@ -30,9 +32,10 @@ public class UserController {
 	@Autowired
 	private MailService mailService;
 
-	@RequestMapping("/registerUser")
-	public ModelAndView showRegister() {
-		return new ModelAndView("register");
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		binder.registerCustomEditor(Date.class, "birthDate", new CustomDateEditor(format, false));
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -48,15 +51,35 @@ public class UserController {
 		return new ModelAndView("redirect:/").addObject("user", savedUser);
 	}
 
-	@InitBinder
-	public void initBinder(WebDataBinder binder) {
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		binder.registerCustomEditor(Date.class, "birthDate", new CustomDateEditor(format, false));
+	@RequestMapping(value = "/forgotPasswordUser", method = RequestMethod.POST)
+	public ModelAndView forgotPassword(@RequestParam String email, HttpSession session) {
+		User user = userService.getUser(email);
+		if (user == null) {
+			return new ModelAndView("redirect:/login").addObject("result", "failure").addObject("message",
+					"No user found with given email id.");
+		} else {
+			session.setAttribute("forgotPassword", true);
+			session.setAttribute("userId", user.getId());
+			session.setAttribute("userEmail", user.getEmail());
+			return new ModelAndView("forgotPasswordForm").addObject("securityQuestions",
+					SecurityQuestions.securityQuestions);
+		}
 	}
-	
-	@RequestMapping("/deactivateUser")
-	public ModelAndView showDeactication() {
-		return new ModelAndView("deactivate");
+
+	@RequestMapping(value = "/updatePasswordForgot")
+	public ModelAndView updatePasswordForget(@RequestParam String password, @RequestParam int securityQuestionId,
+			@RequestParam String securityAnswer, HttpSession session) {
+		int userId = (Integer) session.getAttribute("userId");
+		User updatedUser = userService.updateUserPasswordWithForgot(userId, securityQuestionId, securityAnswer,
+				password);
+		System.out.println(updatedUser);
+		if (updatedUser == null) {
+			return new ModelAndView("forgotPasswordForm")
+					.addObject("securityQuestions", SecurityQuestions.securityQuestions).addObject("result", "failure")
+					.addObject("message", "Invalid security question/answer");
+		}
+		return new ModelAndView("redirect:/login").addObject("result", "success").addObject("message",
+				"User password updated successfully");
 	}
 	
 	@RequestMapping(value = "/deactivate")

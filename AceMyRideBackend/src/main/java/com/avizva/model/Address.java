@@ -5,6 +5,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * Address model class
+ * 
+ * @author Pratyaksh Kumar
+ *
+ */
 @Entity
 public class Address {
 
