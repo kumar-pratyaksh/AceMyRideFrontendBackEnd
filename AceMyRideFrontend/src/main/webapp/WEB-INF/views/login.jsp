@@ -166,7 +166,7 @@ padding: 15px;
 			flag=false;
 		}
 
-		if(password!=confirmPassword){
+		if(!(password.equals(confirmPassword))){
 			alert("Re-entered password should be same as password");
 			flag=false;
 		}
@@ -220,8 +220,6 @@ padding: 15px;
 
 		return flag;
 	}
-	
-	
 
 </script>
 

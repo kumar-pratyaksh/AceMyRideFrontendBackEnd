@@ -30,9 +30,20 @@ public class UserController {
 	@Autowired
 	private MailService mailService;
 
-	@RequestMapping("/registerUser")
-	public ModelAndView showRegister() {
-		return new ModelAndView("register");
+	@RequestMapping("/profile")
+	public ModelAndView showUser(HttpSession session) {
+		int id=(Integer) session.getAttribute("userId");
+		session.setAttribute("user", userService.getUser(id));
+		return new ModelAndView("userProfile");
+	}
+	
+	
+	@RequestMapping(value="/submitUpdate", method = RequestMethod.POST)
+	public ModelAndView submitUpdate(HttpSession session,@ModelAttribute User user) {
+		User updatedUser=userService.updateUser(user);
+		
+		session.setAttribute("user", updatedUser);
+		return new ModelAndView("userProfile");
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
