@@ -81,4 +81,5 @@ public class IndexController {
 	public ModelAndView showDeactication() {
 		return new ModelAndView("deactivate");
 	}
+	
 }

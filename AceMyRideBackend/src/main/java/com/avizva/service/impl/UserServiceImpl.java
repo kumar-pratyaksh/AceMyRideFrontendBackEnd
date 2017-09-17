@@ -28,6 +28,7 @@ public class UserServiceImpl implements UserService {
 		LOGGER.info("Updating user with email " + user.getId());
 		User updatedUser = userDao.update(user);
 		LOGGER.info("User updated " + user.getId());
+		updatedUser=userDao.userWithAddresses(updatedUser);
 		return updatedUser;
 	}
 

@@ -55,11 +55,20 @@ public class UserDaoImpl implements UserDao {
 		Session session = sessionFactory.getCurrentSession();
 		try {
 			session.update(user);
+			
 			return user;
 		} catch (Exception e) {
 			LOGGER.error(e);
 			return null;
 		}
+	}
+	
+	@Transactional
+	public User userWithAddresses(User user)
+	{
+		user.getAddresses();
+		return user;
+		
 	}
 
 	@Transactional
@@ -81,6 +90,7 @@ public class UserDaoImpl implements UserDao {
 			return null;
 		return users.get(0);
 	}
+	
 	@Transactional
 	public User deactivate(int id) {
 

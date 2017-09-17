@@ -38,6 +38,22 @@ public class UserController {
 		binder.registerCustomEditor(Date.class, "birthDate", new CustomDateEditor(format, false));
 	}
 
+	@RequestMapping("/profile")
+	public ModelAndView showUser(HttpSession session) {
+		int id=(Integer) session.getAttribute("userId");
+		session.setAttribute("user", userService.getUser(id));
+		return new ModelAndView("userProfile");
+	}
+	
+	
+	@RequestMapping(value="/submitUpdate", method = RequestMethod.POST)
+	public ModelAndView submitUpdate(HttpSession session,@ModelAttribute User user) {
+		User updatedUser=userService.updateUser(user);
+		
+		session.setAttribute("user", updatedUser);
+		return new ModelAndView("userProfile");
+	}
+
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public ModelAndView addUser(@Valid @ModelAttribute User user, BindingResult result) {
 		System.out.println(result.getAllErrors());

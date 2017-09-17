@@ -84,4 +84,6 @@ public interface UserDao {
 	 */
 	public User reactivate(int id);
 
+	public User userWithAddresses(User user);
+
 }
