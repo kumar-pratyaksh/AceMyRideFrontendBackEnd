@@ -242,7 +242,7 @@
                 <div class="row">
                   <div class="new-parameter col-sm-6 ">New password</div>
                   <div class="new-paramvalue col-sm-6 ">
-                    <input type="password" name="newPassword" id="newPassword">
+                    <input type="password" name="password" id="newPassword">
                   </div>
                 </div>
                 <div class="row">

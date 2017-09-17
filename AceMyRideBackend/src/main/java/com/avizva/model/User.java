@@ -147,10 +147,7 @@ public class User {
 		this.createdAt = createdAt;
 	}
 
-	@PrePersist
-	public void setCreatedAt() {
-		this.createdAt = new Date();
-	}
+	
 
 	public boolean isEnabled() {
 		return enabled;
