@@ -10,6 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+/**
+ * The Feedback model class
+ * 
+ * @author Pratyaksh Kumar
+ *
+ */
 @Entity
 public class Feedback {
 

@@ -121,5 +121,6 @@
 if(${enabled}==false)
 	alert("Welcome back. Your account has been reactivated");
 </script>
+	
 </body>
 </html>

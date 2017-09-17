@@ -2,6 +2,8 @@ package com.avizva.dao.impl;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -15,6 +17,8 @@ import com.avizva.model.User;
 @Repository
 public class UserDaoImpl implements UserDao {
 
+	private static final Logger LOGGER = LogManager.getLogger();
+
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -25,7 +29,7 @@ public class UserDaoImpl implements UserDao {
 			session.save(user);
 			return user;
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 			return null;
 		}
 
@@ -36,12 +40,12 @@ public class UserDaoImpl implements UserDao {
 		Session session = sessionFactory.getCurrentSession();
 		try {
 			User user = session.get(User.class, id);
-			if(user!=null){
+			if (user != null) {
 				user.setEnabled(false);
 			}
 			return user;
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 			return null;
 		}
 	}
@@ -54,7 +58,7 @@ public class UserDaoImpl implements UserDao {
 			
 			return user;
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 			return null;
 		}
 	}
@@ -89,36 +93,36 @@ public class UserDaoImpl implements UserDao {
 	
 	@Transactional
 	public User deactivate(int id) {
-		
+
 		Session session = sessionFactory.getCurrentSession();
 		try {
-				User user = session.get(User.class, id);
-				if(user!=null){
-					user.setEnabled(false);
-				}
-				return user;
-			} catch (Exception e) {
-				e.printStackTrace();
-				return null;
+			User user = session.get(User.class, id);
+			if (user != null) {
+				user.setEnabled(false);
 			}
-		
+			return user;
+		} catch (Exception e) {
+			LOGGER.error(e);
+			return null;
+		}
+
 	}
-	
+
 	@Transactional
 	public User reactivate(int id) {
-		
+
 		Session session = sessionFactory.getCurrentSession();
 		try {
-				User user = session.get(User.class, id);
-				if(user!=null){
-					user.setEnabled(true);
-				}
-				return user;
-			} catch (Exception e) {
-				e.printStackTrace();
-				return null;
+			User user = session.get(User.class, id);
+			if (user != null) {
+				user.setEnabled(true);
 			}
-		
+			return user;
+		} catch (Exception e) {
+			LOGGER.error(e);
+			return null;
+		}
+
 	}
 
 

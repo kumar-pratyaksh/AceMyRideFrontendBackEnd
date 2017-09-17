@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,6 +19,12 @@ import javax.validation.constraints.NotEmpty;
 
 import com.avizva.pojo.UserType;
 
+/**
+ * The User address class
+ * 
+ * @author Pratyaksh Kumar
+ *
+ */
 @Entity
 public class User {
 
@@ -37,7 +44,7 @@ public class User {
 	@NotEmpty
 	private String contact;
 
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
 	private List<Address> addresses;
 
 	@Temporal(TemporalType.DATE)

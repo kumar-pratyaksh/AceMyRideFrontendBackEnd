@@ -9,22 +9,34 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+/**
+ * MVC configuration class
+ * 
+ * @author Pratyaksh.Kumar
+ *
+ */
 @Configuration
 @EnableWebMvc
 public class MvcConfig extends WebMvcConfigurerAdapter {
 
+	/**
+	 * Creates the ViewResolver bean
+	 * 
+	 * @return ViewResolver the view resolver bean
+	 */
 	@Bean
 	public ViewResolver viewResolver() {
-		/* Logger.debug("Starting of the method viewResolver"); */
-
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
 		viewResolver.setViewClass(JstlView.class);
 		viewResolver.setPrefix("/WEB-INF/views/");
 		viewResolver.setSuffix(".jsp");
-		/* Logger.debug("Ending of the method viewResolver"); */
 		return viewResolver;
 	}
 
+	/**
+	 * Method to specify the location of static resources to be handled by
+	 * dispatcher servlet
+	 */
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		super.addResourceHandlers(registry);

@@ -15,18 +15,27 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+/**
+ * 
+ * Application configuration for creating system beans
+ * 
+ * @author Pratyaksh Kumar
+ *
+ */
+
 @Configuration
 @EnableTransactionManagement
 public class ApplicationContextConfig {
 
+	/**
+	 * Method to create dataSource bean
+	 * 
+	 * @return DataSource return the dataSource bean
+	 */
+
 	@Bean(name = "dataSource")
 	public DataSource getDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		/*
-		 * dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
-		 * dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:orcl");
-		 * dataSource.setUsername("hr"); dataSource.setPassword("hr");
-		 */
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 		dataSource.setUrl("jdbc:mysql://localhost:3306/avizva");
 		dataSource.setUsername("root");
@@ -35,7 +44,13 @@ public class ApplicationContextConfig {
 		return dataSource;
 	}
 
-	public Properties getHibernateProperties() {
+	/**
+	 * Method to get properties required for creating SessionFactory bean
+	 * 
+	 * @return Properties returns properties required for creating
+	 *         SessionFactory bean
+	 */
+	private Properties getHibernateProperties() {
 		Properties properties = new Properties();
 		properties.put("hibernate.show_sql", "true");
 		properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
@@ -44,6 +59,13 @@ public class ApplicationContextConfig {
 
 	}
 
+	/**
+	 * Method to create sessionFactory bean
+	 * 
+	 * @param dataSource
+	 *            the dataSource bean
+	 * @return SessionFactory returns sessionFactory bean
+	 */
 	@Autowired
 	@Bean
 	public SessionFactory getSessionFactory(DataSource dataSource) {
@@ -54,6 +76,13 @@ public class ApplicationContextConfig {
 		return sessionBuilder.buildSessionFactory();
 	}
 
+	/**
+	 * Method to create transactionManager bean
+	 * 
+	 * @param sessionFactory
+	 *            the sessionFactory bean
+	 * @return HibernateTransactionManager returns sessionFactory bean
+	 */
 	@Autowired
 	@Bean
 	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {
@@ -61,9 +90,13 @@ public class ApplicationContextConfig {
 		return transactionManager;
 	}
 
+	/**
+	 * Method to create the MailSender bean
+	 * 
+	 * @return JavaMailSender the mailSender bean
+	 */
 	@Bean
 	public JavaMailSender getJavaMailSender() {
-		System.out.println("creating java bean of mailer");
 		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 		mailSender.setHost("smtp.gmail.com");
 		mailSender.setPort(587);
