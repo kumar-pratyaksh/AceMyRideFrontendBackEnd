@@ -30,7 +30,7 @@ public class FileUploadServiceImpl implements FileUploadService {
 		return true;
 	}
 
-	@Override
+	
 	public String uploadProductImage(Product product, MultipartFile file) {
 		if (file.isEmpty()){
 			LOGGER.info("Empty image file");

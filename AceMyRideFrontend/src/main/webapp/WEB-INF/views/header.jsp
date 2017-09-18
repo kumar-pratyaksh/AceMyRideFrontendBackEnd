@@ -43,8 +43,9 @@
 					
 					<li><a>Categories<span class="arrow">&#9660;</span></a>
 							<ul class="sub-menu">
-								<li><a>Category 1</a></li>
-								<li><a>Categoru 2</a></li>
+								<c:forEach var="x" items="${listOfCategories}">
+								<li><a><c:out value="${x.name}"/></a></li>
+								</c:forEach>
 							</ul>
 					</li>
 					<li class="active"><a href="./">Home</a></li>

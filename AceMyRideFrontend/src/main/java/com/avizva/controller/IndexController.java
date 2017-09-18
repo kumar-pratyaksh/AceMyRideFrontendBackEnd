@@ -1,10 +1,13 @@
 package com.avizva.controller;
 
+import javax.servlet.ServletContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.avizva.pojo.SecurityQuestions;
+import com.avizva.service.CategoryService;
 
 /**
  * Controller to handle page requests
@@ -16,6 +19,12 @@ import com.avizva.pojo.SecurityQuestions;
  */
 @Controller
 public class IndexController {
+	
+	@Autowired
+	private ServletContext servletContext;
+	
+	@Autowired
+	private CategoryService categoryService;
 
 	/**
 	 * Method to return the home page
@@ -24,6 +33,7 @@ public class IndexController {
 	 */
 	@RequestMapping("/")
 	public ModelAndView showIndex(){
+		servletContext.setAttribute("listOfCategories", categoryService.getAllCategories());
 		return new ModelAndView("home");
 	}
 	
