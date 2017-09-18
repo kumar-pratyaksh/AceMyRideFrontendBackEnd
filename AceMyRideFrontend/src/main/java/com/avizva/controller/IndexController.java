@@ -56,16 +56,16 @@ public class IndexController {
 	public ModelAndView showLogin() {
 		return new ModelAndView("login").addObject("securityQuestions", SecurityQuestions.securityQuestions);
 	}
-	
-	/**
-	 * Method to return profile page
-	 * 
-	 * @return
-	 */
-	@RequestMapping("/profile")
-	public ModelAndView showProfile() {
-		return new ModelAndView("profile");
-	}
+	//
+	// /**
+	// * Method to return profile page
+	// *
+	// * @return
+	// */
+	// @RequestMapping("/profile")
+	// public ModelAndView showProfile() {
+	// return new ModelAndView("profile");
+	// }
 
 	/**
 	 * Method to return Forgot password page
