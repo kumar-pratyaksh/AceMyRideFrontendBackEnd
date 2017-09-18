@@ -57,7 +57,6 @@ public class IndexController {
 		return new ModelAndView("login").addObject("securityQuestions", SecurityQuestions.securityQuestions);
 	}
 
-
 	/**
 	 * Method to return Forgot password page
 	 * 

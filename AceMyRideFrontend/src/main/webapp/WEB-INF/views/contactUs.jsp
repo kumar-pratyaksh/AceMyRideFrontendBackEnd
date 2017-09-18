@@ -2,7 +2,7 @@
 <script src="${script}/scripts.js"></script>
 <link rel="stylesheet" type="text/css" href="${style}/contact.css">
 
-<div class="container-fluid details" >
+<div class="main-content container-fluid details" >
 	
 		<div class="row text-center">
 			<h1 >GET IN TOUCH</h1>

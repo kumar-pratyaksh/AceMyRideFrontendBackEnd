@@ -128,7 +128,7 @@
 </style>
 
 
-  <div class="container-fluid">
+  <div class="main-content container-fluid">
 
     <div class="row">
 
