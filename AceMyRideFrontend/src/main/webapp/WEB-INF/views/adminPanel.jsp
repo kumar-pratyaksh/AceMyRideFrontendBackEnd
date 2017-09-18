@@ -258,7 +258,7 @@
 							<tr>
 								<td data-id="${supplier.id}"><c:out value="${i.index+1}"></c:out>
 								</td>
-								<td data-categoryId="${supplier.supplierId}">${supplier.supplierId}</td>
+								<td data-supplierId="${supplier.supplierId}">${supplier.supplierId}</td>
 								<td data-name="${supplier.name}">${supplier.name}</td>
 								<td data-description="${supplier.description}">${supplier.description}</td>
 								<td class="text-center"><span

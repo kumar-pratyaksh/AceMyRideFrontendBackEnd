@@ -28,7 +28,7 @@ public class Category {
 	private Date createdAt;
 	
 	@Column(columnDefinition = "boolean default true")
-	private Boolean enabled;
+	private boolean enabled;
 
 	public int getId() {
 		return id;
