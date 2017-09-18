@@ -58,7 +58,6 @@ public class IndexController {
 	}
 
 
-
 	/**
 	 * Method to return Forgot password page
 	 * 
