@@ -1,0 +1,47 @@
+.product-filter{
+	padding: 20px;
+}
+.product-filter h1{
+	font-size: 28px;
+	font-weight: 900;
+}
+
+.sort{
+	display: inline-block;
+	float: right;
+}
+.collection-sort{
+	display: inline;
+}
+
+.products{
+	clear: both;
+	margin-top: 20px;
+	display: flex;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	flex-direction: row;
+  	flex-flow: row wrap;
+}
+
+.product-card-small{
+	width: 300px;
+	height: 400px;
+	overflow: hidden;
+	text-align: center;
+	margin: 25px;
+	position: relative;
+	border-radius: 10px;
+	flex-shrink: 0;
+}
+
+.product-card-small .product-image{
+	height: 300px;
+	display: inline-block;
+	overflow: hidden;
+}
+
+.product-image img{
+	height: 300px;
+}
