@@ -23,6 +23,8 @@ ol, ul {
 body,html{
   font-family: 'Roboto';
   color: #252323;
+  min-height: 1vh;
+  background-color:#f5f1ed;
 }
 
 .clearfix:after {
