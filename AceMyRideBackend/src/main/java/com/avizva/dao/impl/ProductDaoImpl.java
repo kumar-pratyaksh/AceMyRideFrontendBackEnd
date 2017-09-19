@@ -2,6 +2,7 @@ package com.avizva.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -79,5 +80,15 @@ public class ProductDaoImpl implements ProductDao {
 	@Transactional
 	public Product view(int id) {
 		return sessionFactory.getCurrentSession().get(Product.class, id);
+	}
+
+	@Transactional
+	public List<Product> getCategorizedProduct(String categoryName) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from Product where belongsToCategoryName=:belongsToCategoryName");
+		query.setParameter("belongsToCategoryName", categoryName);
+		List<Product> list = query.list();
+		return list;
+
 	}
 }

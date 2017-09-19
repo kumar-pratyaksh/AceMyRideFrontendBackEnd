@@ -45,7 +45,7 @@
 					<li><a>Categories<span class="arrow">&#9660;</span></a>
 							<ul class="sub-menu">
 								<c:forEach var="x" items="${listOfCategories}">
-								<li><a><c:out value="${x.name}"/></a></li>
+								<li><a href="categoryUser?name=${x.name}"><c:out value="${x.name}"/></a></li>
 								</c:forEach>
 							</ul>
 					</li>
@@ -57,9 +57,9 @@
 						<li><a href="login"><span class="glyphicon glyphicon-user"></span> Login/Register</a></li>
 					</c:if>
 					<c:if test="${isLoggedIn}">
--              			<li><a href="profile">Hi, <c:out value="${userName}"></c:out></a></li>
--               		<li><a href="logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
--       			</c:if>
+              			<li><a href="profile">Hi, <c:out value="${userName}"></c:out></a></li>
+               		<li><a href="logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
+       			</c:if>
 				</ul>
 			</nav>
 		</div>
