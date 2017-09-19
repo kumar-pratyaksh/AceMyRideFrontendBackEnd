@@ -1,5 +1,5 @@
 <%@include file="header.jsp" %>
-	<div class="container">
+	<div class="container main-content">
 		<div id="myCarousel" class="carousel slide" data-ride="carousel">
 		<ol class="carousel-indicators">
 				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -114,8 +114,13 @@
 		</div>
 	</div>
 	
+	
 	<%@include file="footer.jsp" %>
 
-
+<script>
+if(${enabled}==false)
+	alert("Welcome back. Your account has been reactivated");
+</script>
+	
 </body>
 </html>

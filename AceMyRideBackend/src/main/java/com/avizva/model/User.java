@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,6 +19,12 @@ import javax.validation.constraints.NotEmpty;
 
 import com.avizva.pojo.UserType;
 
+/**
+ * The User address class
+ * 
+ * @author Pratyaksh Kumar
+ *
+ */
 @Entity
 public class User {
 
@@ -37,18 +44,24 @@ public class User {
 	@NotEmpty
 	private String contact;
 
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
 	private List<Address> addresses;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "birth_date")
+	@Column(name = "birth_date", nullable = false)
 	private Date birthDate;
 
+	private int securityQuestionId;
+
+	@NotEmpty
+	private String securityAnswer;
+
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "created_at")
+	@Column(name = "created_at", columnDefinition = "datetime default CURRENT_TIMESTAMP", updatable = false)
 	private Date createdAt;
 
-	private boolean enabled;
+	@Column(columnDefinition = "boolean default true", insertable = false)
+	private Boolean enabled;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "user_type")
@@ -102,6 +115,22 @@ public class User {
 		this.addresses = addresses;
 	}
 
+	public int getSecurityQuestionId() {
+		return securityQuestionId;
+	}
+
+	public void setSecurityQuestionId(int securityQuestionId) {
+		this.securityQuestionId = securityQuestionId;
+	}
+
+	public String getSecurityAnswer() {
+		return securityAnswer;
+	}
+
+	public void setSecurityAnswer(String securityAnswer) {
+		this.securityAnswer = securityAnswer;
+	}
+
 	public Date getBirthDate() {
 		return birthDate;
 	}
@@ -118,10 +147,7 @@ public class User {
 		this.createdAt = createdAt;
 	}
 
-	@PrePersist
-	public void setCreatedAt() {
-		this.createdAt = new Date();
-	}
+	
 
 	public boolean isEnabled() {
 		return enabled;
@@ -139,5 +165,12 @@ public class User {
 		return this.userType;
 	}
 
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", contact="
+				+ contact + ", addresses=" + addresses + ", birthDate=" + birthDate + ", securityQuestionId="
+				+ securityQuestionId + ", securityAnswer=" + securityAnswer + ", createdAt=" + createdAt + ", enabled="
+				+ enabled + ", userType=" + userType + "]";
+	}
 
 }

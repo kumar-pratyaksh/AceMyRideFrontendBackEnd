@@ -11,6 +11,12 @@ import com.avizva.model.Feedback;
 import com.avizva.service.FeedbackService;
 import com.avizva.service.MailService;
 
+/**
+ * Feedback controller
+ * 
+ * @author Pratyaksh.Kumar
+ *
+ */
 @Controller
 public class FeedbackController {
 
@@ -20,6 +26,13 @@ public class FeedbackController {
 	@Autowired
 	private MailService mailService;
 
+	/**
+	 * Methods to handle requests for adding feedback
+	 * 
+	 * @param feedback
+	 *            the feedback object to be saved
+	 * @return ModelAndView returns the contactUs page view
+	 */
 	@RequestMapping(value = "saveFeedback", method = RequestMethod.POST)
 	public ModelAndView saveFeedback(@ModelAttribute Feedback feedback) {
 		Feedback savedFeedback = feedbackService.saveFeedback(feedback);

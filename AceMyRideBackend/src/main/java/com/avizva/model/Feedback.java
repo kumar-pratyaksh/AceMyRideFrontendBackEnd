@@ -7,10 +7,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.PrePersist;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+/**
+ * The Feedback model class
+ * 
+ * @author Pratyaksh Kumar
+ *
+ */
 @Entity
 public class Feedback {
 
@@ -66,11 +71,6 @@ public class Feedback {
 
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
-	}
-
-	@PrePersist
-	public void setCreatedAt() {
-		this.createdAt = new Date();
 	}
 
 }
