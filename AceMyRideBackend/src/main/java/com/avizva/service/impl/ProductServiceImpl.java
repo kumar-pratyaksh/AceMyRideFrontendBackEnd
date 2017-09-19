@@ -1,10 +1,5 @@
 package com.avizva.service.impl;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,12 +37,13 @@ public class ProductServiceImpl implements ProductService {
 	}
 	
 	public Product updateProduct(Product product, MultipartFile file) {
-		if(file==null){
+		if (file == null || file.isEmpty()) {
 			Product savedProduct=productDao.view(product.getId());
 			product.setImagePath(savedProduct.getImagePath());
 		}else{
 			product.setImagePath(fileUploadService.uploadProductImage(product, file));
 		}
+		product.setEnabled(true);
 		Product updatedProduct=productDao.update(product);
 		return updatedProduct;
 	}

@@ -28,9 +28,13 @@ img.product-image{
 	font-weight: 600;
 }
 
+.description{
+	height:65px;
+	overflow:hidden;
+}
+
 .edit-product {
 	position: absolute;
-    bottom: -110px;
     right: 0;
     padding: 10px 30px;
     cursor: pointer;

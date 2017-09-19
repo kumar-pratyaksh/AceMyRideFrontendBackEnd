@@ -18,7 +18,7 @@ public class FileUploadServiceImpl implements FileUploadService {
 
 	private static final Logger LOGGER = LogManager.getLogger();
 
-	private final String fileDir = "/var/AceMyRide/productImages/";
+	private final String fileDir = "/tmp/AceMyRide/productImages/";
 
 	private boolean saveFile(Path path, byte[] file) {
 		try {
@@ -36,12 +36,13 @@ public class FileUploadServiceImpl implements FileUploadService {
 			LOGGER.info("Empty image file");
 			return "";
 		}
+		String fileName = product.getProductId() + (int) (Math.random() * 100000) + file.getOriginalFilename();
 		Path path = FileSystems.getDefault()
-				.getPath(fileDir + "product" + product.getProductId() + file.getOriginalFilename());
+				.getPath(fileDir + fileName);
 		try {
 			if (saveFile(path, file.getBytes())) {
 				LOGGER.info("File saved successfully");
-				return path.toString();
+				return fileName;
 			}
 		} catch (IOException e) {
 			LOGGER.error(e);
