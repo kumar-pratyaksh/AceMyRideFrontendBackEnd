@@ -40,7 +40,7 @@ public class FileUploadServiceImpl implements FileUploadService {
 				.getPath(fileDir + "product" + product.getProductId() + file.getOriginalFilename());
 		try {
 			if (saveFile(path, file.getBytes())) {
-				LOGGER.info("FIle saved successfully");
+				LOGGER.info("File saved successfully");
 				return path.toString();
 			}
 		} catch (IOException e) {

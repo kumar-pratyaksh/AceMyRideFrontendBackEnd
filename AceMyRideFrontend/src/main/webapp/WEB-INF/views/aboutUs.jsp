@@ -1,5 +1,5 @@
 <%@include file="header.jsp" %>
-<div>
+<div class="main-content">
 	<div class="text-center">
 		<h3>About AceMyRide</h3>
 		<h5>Stories that make us who we are</h5>

@@ -161,7 +161,9 @@ background-color: #f5f1ed;
 
   
 <div class="main-content login-background">
+
 <div class="container-fluid">
+ <div class="row"><label></label></div>
    <div class="row">
     <div class="col-md-6 col-md-offset-3">
       <div class="panel panel-login">
