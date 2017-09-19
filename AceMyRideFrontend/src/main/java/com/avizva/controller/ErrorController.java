@@ -15,7 +15,8 @@ public class ErrorController {
 
 	@ExceptionHandler(Exception.class)
 	public ModelAndView handleError(HttpServletRequest request, Exception e) {
-		LOGGER.error(e);
+		e.printStackTrace();
+		LOGGER.error(e.getLocalizedMessage());
 		return new ModelAndView("error");
 	}
 

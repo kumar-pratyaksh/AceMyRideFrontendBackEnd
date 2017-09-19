@@ -27,8 +27,9 @@ public class CartServiceImpl implements CartService {
 
 	@Override
 	@Transactional
-	public List<CartItem> addToCart(int productId, int userId, int quantity) {
+	public CartItem addToCart(int productId, int userId, int quantity) {
 		CartItem existingCartItem = cartDao.getByProductIDUserId(productId, userId);
+		CartItem savedCartItem = null;
 		if (existingCartItem == null) {
 			LOGGER.info("No existing cart item exists " + userId);
 			Product product = productDao.view(productId);
@@ -41,7 +42,7 @@ public class CartServiceImpl implements CartService {
 					cartItem.setQuantity(quantity);
 					cartItem.setUserId(userId);
 					cartItem.setTotalPrice(quantity * product.getPrice());
-					cartDao.save(cartItem);
+					savedCartItem = cartDao.save(cartItem);
 				} else {
 					int available = product.getInStock();
 					product.setInStock(0);
@@ -50,45 +51,45 @@ public class CartServiceImpl implements CartService {
 					cartItem.setQuantity(available);
 					cartItem.setUserId(userId);
 					cartItem.setTotalPrice(available * product.getPrice());
-					cartDao.save(cartItem);
+					savedCartItem = cartDao.save(cartItem);
 				}
 			} else {
 				cartItem.setProduct(product);
 				cartItem.setQuantity(0);
 				cartItem.setUserId(userId);
 				cartItem.setTotalPrice(0.0d);
-				cartDao.save(cartItem);
+				savedCartItem = cartDao.save(cartItem);
 			}
 
 		} else {
 			Product product = existingCartItem.getProduct();
 			int available = product.getInStock();
 			if (available == 0) {
-				return cartDao.getForUser(userId);
+				return existingCartItem;
 			} else if (available > quantity) {
 				product.setInStock(available - quantity);
 				productDao.update(product);
 				existingCartItem.setQuantity(existingCartItem.getQuantity() + quantity);
 				existingCartItem.setTotalPrice(existingCartItem.getQuantity() * product.getPrice());
-				cartDao.update(existingCartItem);
+				savedCartItem = cartDao.update(existingCartItem);
 			} else {
 				product.setInStock(0);
 				productDao.update(product);
 				existingCartItem.setQuantity(existingCartItem.getQuantity() + available);
 				existingCartItem.setTotalPrice(existingCartItem.getQuantity() * product.getPrice());
-				cartDao.update(existingCartItem);
+				savedCartItem = cartDao.update(existingCartItem);
 			}
 		}
-		return cartDao.getForUser(userId);
+		return savedCartItem;
 	}
 
 	@Override
 	@Transactional
-	public List<CartItem> updateCartItem(CartItem cartItem) {
+	public CartItem updateCartItem(CartItem cartItem) {
 		CartItem savedCartItem = cartDao.get(cartItem.getId());
 		int diff = savedCartItem.getQuantity() - cartItem.getQuantity();
 		if (diff == 0) {
-			return cartDao.getForUser(cartItem.getUserId());
+			return savedCartItem;
 		} else if (diff > 0) {
 			Product product = savedCartItem.getProduct();
 			product.setInStock(product.getInStock() + diff);
@@ -96,36 +97,44 @@ public class CartServiceImpl implements CartService {
 			savedCartItem.setProduct(product);
 			savedCartItem.setQuantity(cartItem.getQuantity());
 			savedCartItem.setTotalPrice(cartItem.getQuantity() * product.getPrice());
-			cartDao.update(savedCartItem);
-			return cartDao.getForUser(savedCartItem.getUserId());
+			savedCartItem = cartDao.update(savedCartItem);
+
 		} else {
 			Product product = savedCartItem.getProduct();
 			int available = product.getInStock();
 			if (available <= 0) {
-				return cartDao.getForUser(savedCartItem.getUserId());
+				return savedCartItem;
 			} else {
-				if (available >= diff) {
-					product.setInStock(available - diff);
+				if (available >= -diff) {
+					product.setInStock(available + diff);
 					product = productDao.update(product);
-					savedCartItem.setQuantity(savedCartItem.getQuantity() + diff);
+					savedCartItem.setQuantity(savedCartItem.getQuantity() - diff);
 					savedCartItem.setTotalPrice(savedCartItem.getQuantity() * product.getPrice());
-					cartDao.update(savedCartItem);
-					return cartDao.getForUser(savedCartItem.getUserId());
+					savedCartItem = cartDao.update(savedCartItem);
 				} else {
 					product.setInStock(0);
 					product = productDao.update(product);
 					savedCartItem.setQuantity(savedCartItem.getQuantity() + available);
 					savedCartItem.setTotalPrice(savedCartItem.getQuantity() * product.getPrice());
-					cartDao.update(savedCartItem);
-					return cartDao.getForUser(savedCartItem.getUserId());
+					savedCartItem = cartDao.update(savedCartItem);
 				}
 			}
 		}
-
+		return savedCartItem;
 	}
 
 	public List<CartItem> getCartItemsForUser(int userId) {
 		return cartDao.getForUser(userId);
+	}
+
+	@Override
+	@Transactional
+	public CartItem deleteCartItem(CartItem cartItem) {
+		CartItem savedCartItem = cartDao.get(cartItem.getId());
+		Product product = savedCartItem.getProduct();
+		product.setInStock(product.getInStock() + savedCartItem.getQuantity());
+		productDao.update(product);
+		return cartDao.delete(savedCartItem);
 	}
 
 }
