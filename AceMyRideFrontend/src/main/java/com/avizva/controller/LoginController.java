@@ -39,6 +39,9 @@ public class LoginController {
 		if(user!=null)
 		{
 			setUserDetails(user,session);
+			if (session.getAttribute("redirectTo") != null) {
+				return new ModelAndView("redirect:" + (String) session.getAttribute("redirectTo"));
+			}
 			return new ModelAndView("redirect:/");
 		}
 		else
@@ -54,7 +57,7 @@ public class LoginController {
 		session.setAttribute("userEmail", user.getEmail());
 		session.setAttribute("userName", user.getName());
 		session.setAttribute("userContact", user.getContact());
-//		session.setAttribute("userRole", user.getUserType());
+		// session.setAttribute("userRole", user.getUserType());
 
 	}
 	

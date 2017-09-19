@@ -1,0 +1,35 @@
+.product{
+	margin: 30px auto;
+    padding: 40px 20px;
+    background-color: white;
+    box-shadow: 4px 4px 14px 3px rgba(0, 0, 0, 0.48);
+    border-radius: 5px;
+    line-height: 3;
+}
+
+.product .img-responsive{
+	margin: 0 auto;
+}
+
+.product h1 {
+    font-size: 40px;
+    font-weight: 900;
+}
+
+.product h2{
+	font-size: 32px;
+	font-weight: 600;
+}
+
+.label{
+	font-size: 90%;
+}
+
+.cart-row{
+	bottom: 0;
+}
+
+.description{
+	height: 340px;
+	overflow-y: scroll;
+}
