@@ -4,11 +4,13 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.avizva.model.CartItem;
 import com.avizva.service.CartService;
 import com.avizva.util.JsonUtil;
 
@@ -46,6 +48,18 @@ public class CartController {
 		cartService.addToCart(productId, userId, quantity);
 		return new ModelAndView("redirect:cart");
 
+	}
+
+	@RequestMapping(value = "updateCartItem")
+	public ModelAndView updateCartItem(@ModelAttribute CartItem cartItem) {
+		cartService.updateCartItem(cartItem);
+		return new ModelAndView("redirect:cart");
+	}
+
+	@RequestMapping(value = "deleteCartItem")
+	public ModelAndView deleteCartItem(@ModelAttribute CartItem cartItem) {
+		cartService.deleteCartItem(cartItem);
+		return new ModelAndView("redirect:cart");
 	}
 
 }
