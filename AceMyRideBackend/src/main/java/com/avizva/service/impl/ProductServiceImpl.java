@@ -63,6 +63,10 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.view(productId);
 	}
 
+	public List<Product> getProductUsingCategory(String categoryName) {
+		List<Product> completeList = productDao.getCategorizedProduct(categoryName);
+		return completeList.stream().filter(product -> product.isEnabled()).collect(Collectors.toList());
+	}
 	
 
 }

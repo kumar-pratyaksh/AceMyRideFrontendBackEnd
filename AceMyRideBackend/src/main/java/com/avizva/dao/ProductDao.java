@@ -17,4 +17,6 @@ public interface ProductDao {
 	public Product view(String productId);
 
 	public List<Product> viewAll();
+
+	public List<Product> getCategorizedProduct(String categoryName);
 }
