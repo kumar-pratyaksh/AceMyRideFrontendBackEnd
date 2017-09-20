@@ -89,6 +89,5 @@ public class ProductDaoImpl implements ProductDao {
 		query.setParameter("belongsToCategoryName", categoryName);
 		List<Product> list = query.list();
 		return list;
-
 	}
 }
