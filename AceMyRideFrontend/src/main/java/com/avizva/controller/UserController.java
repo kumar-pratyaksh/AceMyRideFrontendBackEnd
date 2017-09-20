@@ -99,7 +99,7 @@ public class UserController {
 					.addObject("securityQuestions", SecurityQuestions.securityQuestions).addObject("result", "failure")
 					.addObject("message", "Invalid security question/answer");
 		}
-		return new ModelAndView("redirect:/registerLogin").addObject("result", "success").addObject("message",
+		return new ModelAndView("redirect:/login").addObject("result", "success").addObject("message",
 				"User password updated successfully");
 	}
 	
