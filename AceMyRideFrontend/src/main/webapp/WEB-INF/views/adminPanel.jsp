@@ -6,6 +6,11 @@
 
 	<div class="row">
 		<div class="vertical-menu col-sm-2 ">
+			<div>
+				<form action="logout" method="post">
+					<input type="submit" class="button " value="Logout" />
+				</form>
+			</div>
 			<div class="v-menu-header">Admin Panel</div>
 			<ul>
 			</ul>
@@ -305,8 +310,8 @@
 												<option value="" disabled selected>Select
 												Categories</option>
 												<c:forEach items="${listCategories }" var="category">
-												<option value="${category.name }">${category.name }</option>
-											</c:forEach>
+													<option value="${category.name }">${category.name }</option>
+												</c:forEach>
 										</select>
 
 									</div>

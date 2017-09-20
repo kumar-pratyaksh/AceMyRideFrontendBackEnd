@@ -97,17 +97,13 @@
 
   padding-top: 20px;
 }
-.footer > div > [class*='col-sm-3']:before{
-  background: white;
-  bottom: 0;
-  content: " ";
-  left: 0;
-  position: absolute;
-  width: 1px;
-  top: 0;
-  height: 100%;
-  min-height: 100%;
+.footer > div > [class*='col-sm-3']{
+  	display:table-cell;
+    border-left:2px solid white;
+    width:25%;
+    height: 210px;
 }
+
 .footer > div > [class*='col-sm-3']first-child:before{
   display: none;
   }
@@ -121,5 +117,11 @@
 .footer > div > [class*='col-sm-3']>a{
   color: white;
 }
-
+.footer{
+	background-color: #252323;
+}
+.topBar{
+	 width: 24%; 
+	 background-color: #252323;
+}
 

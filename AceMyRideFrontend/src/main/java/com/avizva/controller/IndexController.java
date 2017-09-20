@@ -1,6 +1,7 @@
 package com.avizva.controller;
 
 import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -81,5 +82,19 @@ public class IndexController {
 	public ModelAndView showDeactication() {
 		return new ModelAndView("deactivate");
 	}
-	
+
+	@RequestMapping("/loginAdmin")
+	public ModelAndView index21() {
+		return new ModelAndView("loginAdmin");
+
+	}
+	//
+	@RequestMapping("/loginError")
+	public ModelAndView index3() throws Exception {
+		return new ModelAndView("loginError");
+
+	}
+
+
+
 }
