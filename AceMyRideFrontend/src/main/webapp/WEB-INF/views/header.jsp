@@ -52,11 +52,12 @@
 					<li class="active"><a href="./">Home</a></li>
 					<li><a href="aboutUs">About Us</a></li>
 					<li><a href="contactUs">Contact Us</a></li>
-					<li><a href="careers">Careers</a></li>
 					<c:if test="${empty isLoggedIn}">
 						<li><a href="login"><span class="glyphicon glyphicon-user"></span> Login/Register</a></li>
+						
 					</c:if>
 					<c:if test="${isLoggedIn}">
+				     <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
               			<li><a href="profile">Hi, <c:out value="${userName}"></c:out></a></li>
                		<li><a href="logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
        			</c:if>
