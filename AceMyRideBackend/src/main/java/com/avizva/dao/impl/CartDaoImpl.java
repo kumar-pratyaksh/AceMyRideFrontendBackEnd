@@ -88,7 +88,8 @@ public class CartDaoImpl implements CartDao {
 	@Transactional
 	public CartItem getByProductIDUserId(int productId, int userId) {
 		Session session = sessionFactory.getCurrentSession();
-		Query query = session.createQuery("from CartItem where productId=:productId and userId=:userId");
+		Query query = session
+				.createQuery("from CartItem where productId=:productId and userId=:userId and isProdcessed=false");
 		query.setParameter("productId", productId);
 		query.setParameter("userId", userId);
 		if (query.list().isEmpty())

@@ -1,9 +1,12 @@
 package com.avizva.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  * Address model class
@@ -25,6 +28,16 @@ public class Address {
 	private String city;
 
 	private String address;
+
+	@Column(name = "userId")
+	private int userId;
+
+	@ManyToOne
+	@JoinColumn(name = "userId", insertable = false, updatable = false)
+	private User user;
+
+	@Column(columnDefinition = "boolean default true", insertable = false)
+	private boolean active;
 
 	public int getId() {
 		return id;
@@ -64,6 +77,30 @@ public class Address {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 }
