@@ -43,7 +43,7 @@ public class User {
 	@NotEmpty
 	private String contact;
 
-	@OneToMany(fetch = FetchType.EAGER)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
 	private List<Address> addresses;
 
 	@Temporal(TemporalType.DATE)

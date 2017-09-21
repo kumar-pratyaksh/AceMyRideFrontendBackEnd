@@ -16,67 +16,61 @@
     <tbody>
       <tr ng-repeat="cartItem in cartList">
         <td data-th="Product">
-        <a href="product?id={{cartItem.product.id}}">
-          <div class="row">
-            <div class="col-sm-2 hidden-xs"><img src="download?fileName={{cartItem.product.imagePath}}" class="img-responsive img-rounded"></div>
-            <div class="col-sm-10 product-detail">
-              <h4 class="product-name">{{cartItem.product.brand}} {{cartItem.product.name}}</h4>
-              <p class="product-description text-muted">{{cartItem.product.description}}</p>
+          <a href="product?id={{cartItem.product.id}}">
+            <div class="row">
+              <div class="col-sm-2 hidden-xs"><img src="download?fileName={{cartItem.product.imagePath}}" class="img-responsive img-rounded"></div>
+              <div class="col-sm-10 product-detail">
+                <h4 class="product-name">{{cartItem.product.brand}} {{cartItem.product.name}}</h4>
+                <p class="product-description text-muted">{{cartItem.product.description}}</p>
+              </div>
             </div>
-          </div>
           </a>
         </td>
         <td data-th="Price" class="price">&#8377; {{cartItem.product.price}}</td>
         <td data-th="Quantity">
-        	<form action="updateCartItem" method="post" data-cart-item-id="{{cartItem.id}}">
-        	<input type="hidden" name="id" value="{{cartItem.id}}">
-          <input type="number" name="quantity" value="{{cartItem.quantity}}" min="0" max="{{cartItem.quantity + cartItem.product.inStock}}" class="form-control">
-        	</form>
+          <form action="updateCartItem" method="post" data-cart-item-id="{{cartItem.id}}">
+            <input type="hidden" name="id" value="{{cartItem.id}}">
+            <input type="number" name="quantity" value="{{cartItem.quantity}}" min="0" max="{{cartItem.quantity + cartItem.product.inStock}}" class="form-control">
+          </form>
         </td>
         <td data-th="Subtotal" class="text-center price">&#8377; {{cartItem.totalPrice}}</td>
         <td class="actions" data-th="actions">
           <span class="btn glyphicon glyphicon-refresh btn-info" ng-click="update(cartItem.id)"></span>
-          <span class="btn glyphicon glyphicon-trash btn-danger" ng-click="delete(cartItem.id)"></i></span>         
-        </td>
+          <span class="btn glyphicon glyphicon-trash btn-danger" ng-click="delete(cartItem.id)"></i></span>
+        </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <td><a href="#" class="btn btn-warning"><i class="glyphicon glyphicon-chevron-left"></i> Continue Shopping</a></td>
+        <td colspan="2" class="hidden-xs"></td>
+        <td class="hidden-xs text-center price"><strong>Total &#8377; {{cartAmount}}</strong></td>
+        <td><a href="#" class="btn btn-success btn-block">Checkout <i class="glyphicon glyphicon-chevron-right"></i></a></td>
       </tr>
-    </tbody>
-    <tfoot>
-                <tr>
-                  <td><a href="#" class="btn btn-warning"><i class="glyphicon glyphicon-chevron-left"></i> Continue Shopping</a></td>
-                  <td colspan="2" class="hidden-xs"></td>
-                  <td class="hidden-xs text-center price"><strong>Total &#8377; {{cartAmount}}</strong></td>
-                  <td><a href="#" class="btn btn-success btn-block">Checkout <i class="glyphicon glyphicon-chevron-right"></i></a></td>
-                </tr>
-              </tfoot>
-  </table>
-</div>
-<script type="text/javascript">
+      </tfoot>
+    </table>
+  </div>
+  <script type="text/javascript">
   
-
   var app=angular.module('myApp',[]);
   app.controller('myController',  function($scope){
-    $scope.cartList=${listCartItems};
-    $scope.cartAmount=0;
-    $scope.update=function(id){
-      var form=$(document).find('form[data-cart-item-id='+id+']');
-      $(form).submit();
-    };
-    $scope.delete=function(id){
-      if(confirm("Do you really want to permanently remove this item from cart???")){
-      	var form=$(document).find('form[data-cart-item-id='+id+']');
-      	$(form).attr('action', 'deleteCartItem');
-      	$(form).submit();
-    }
-    };
-    for (var i = 0; i < $scope.cartList.length; i++) {
-      $scope.cartAmount+=$scope.cartList[i].totalPrice;
-    }
-
+  $scope.cartList=${listCartItems};
+  $scope.cartAmount=0;
+  $scope.update=function(id){
+  var form=$(document).find('form[data-cart-item-id='+id+']');
+  $(form).submit();
+  };
+  $scope.delete=function(id){
+  if(confirm("Do you really want to permanently remove this item from cart???")){
+    var form=$(document).find('form[data-cart-item-id='+id+']');
+    $(form).attr('action', 'deleteCartItem');
+    $(form).submit();
+  }
+  };
+  for (var i = 0; i < $scope.cartList.length; i++) {
+  $scope.cartAmount+=$scope.cartList[i].totalPrice;
+  }
   });
-</script>
-
-<%@include file="footer.jsp"%>
-
+  </script>
+  <%@include file="footer.jsp"%>
 </body>
-
 </html>

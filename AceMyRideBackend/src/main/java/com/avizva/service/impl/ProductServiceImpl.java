@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.avizva.dao.ProductDao;
+import com.avizva.model.CartItem;
 import com.avizva.model.Product;
 import com.avizva.service.FileUploadService;
 import com.avizva.service.ProductService;
@@ -66,6 +67,16 @@ public class ProductServiceImpl implements ProductService {
 	public List<Product> getProductUsingCategory(String categoryName) {
 		List<Product> completeList = productDao.getCategorizedProduct(categoryName);
 		return completeList.stream().filter(product -> product.isEnabled()).collect(Collectors.toList());
+	}
+
+	@Override
+	public void removeProductFromStock(List<CartItem> cartItems) {
+		cartItems.stream().forEach(cartItem -> {
+			Product product = cartItem.getProduct();
+			product.setInStock(product.getInStock() - cartItem.getQuantity());
+			productDao.update(product);
+		});
+
 	}
 	
 

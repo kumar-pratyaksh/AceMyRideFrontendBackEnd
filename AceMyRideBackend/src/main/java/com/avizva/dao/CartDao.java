@@ -4,6 +4,13 @@ import java.util.List;
 
 import com.avizva.model.CartItem;
 
+/**
+ * 
+ * Dao for User model
+ * 
+ * @author Pratyaksh Kumar
+ *
+ */
 public interface CartDao {
 
 	public CartItem save(CartItem cartItem);
