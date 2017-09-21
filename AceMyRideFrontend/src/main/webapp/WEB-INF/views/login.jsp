@@ -180,7 +180,7 @@ background-color: #f5f1ed;
         <div class="panel-body">
           <div class="row">
             <div class="col-lg-12">
-              <form id="login-form" action="loginSubmit" onsubmit="return ValidationLogin()" method="post" role="form" style="display: block;">
+              <form id="login-form" action="submitLogin" onsubmit="return ValidationLogin()" method="post" role="form" style="display: block;">
                 <h2>LOGIN</h2>
                   <div class="form-group">
                     <input type="email" name="email" id="email1" class="form-control" placeholder="Email" value="">

@@ -58,8 +58,10 @@
 					</c:if>
 					<c:if test="${isLoggedIn}">
               			<li><a href="profile">Hi, <c:out value="${userName}"></c:out></a></li>
-               		<li><a href="logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
+
+               		<li><a href="userLogout"><span class="glyphicon glyphicon-user"></span>Logout</a></li>
        			</c:if>
+       			
 				</ul>
 			</nav>
 		</div>

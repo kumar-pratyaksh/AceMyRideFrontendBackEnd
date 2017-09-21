@@ -33,9 +33,11 @@ public class LoginController {
 	 * @param password
 	 * @return The appropriate view
 	 */
-	@RequestMapping(value = "/loginSubmit", method = RequestMethod.POST)
-	public ModelAndView performLogin(HttpSession session,@RequestParam("email")String email,@RequestParam("password")String password) {
+	@RequestMapping(value = "/submitLogin", method = RequestMethod.POST)
+	public ModelAndView performLogin(HttpSession session, @RequestParam("email") String email,
+			@RequestParam("password") String password) {
 		User user=loginAuthService.authenticate(email,password);
+		System.out.println("Inside Login Submit Controller" + user);
 		if(user!=null)
 		{
 			setUserDetails(user,session);
@@ -57,7 +59,8 @@ public class LoginController {
 		session.setAttribute("userEmail", user.getEmail());
 		session.setAttribute("userName", user.getName());
 		session.setAttribute("userContact", user.getContact());
-		// session.setAttribute("userRole", user.getUserType());
+
+		session.setAttribute("userRole", user.getUserType());
 
 	}
 	
@@ -67,7 +70,7 @@ public class LoginController {
 	 * @param session
 	 * @return
 	 */
-	@RequestMapping("/logout")
+	@RequestMapping("/userLogout")
 	public ModelAndView performLogout(HttpSession session)
 	{
 		session.invalidate();
