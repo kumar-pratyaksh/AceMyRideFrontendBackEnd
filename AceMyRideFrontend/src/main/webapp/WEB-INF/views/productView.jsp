@@ -10,8 +10,7 @@
   justify-content: space-around;
   margin-top: 50px; 
   
-
-}
+  }
 
 
 
@@ -27,7 +26,14 @@
  
   max-width:250px;
   height:470px;
- 
+
+  
+  margin-bottom:50px;
+  margin-right:80px;
+  margin-left:80px;
+  align-items:center;
+
+
 }
 
 .single:hover{
@@ -53,7 +59,7 @@
 .flex > section {
   align-items: center;
   display: flex;
-  flex: 1 1 0; 
+  flex: 1 1 0 ; 
   flex-direction: column;
   text-align: center;
   width: 270px;
@@ -79,7 +85,8 @@
 }
 
 img {
-  width: 400px;
+  width: 250px;
+  height: 250px;
   border-radius: 2px;
 }
 
@@ -284,6 +291,8 @@ var app = angular.module('myApp', []);
  
  });
 </script>
+
+<%@include file="footer.jsp" %>
 
 </body>
 </html>
