@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.avizva.model.CartItem;
 import com.avizva.model.Product;
 
 
@@ -23,5 +24,7 @@ public interface ProductService {
 	public List<Product> getAllProducts();
 	
 	public List<Product> getProductUsingCategory(String categoryName);
+
+	public void removeProductFromStock(List<CartItem> cartItems);
 
 }

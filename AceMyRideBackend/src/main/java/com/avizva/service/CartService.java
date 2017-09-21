@@ -14,4 +14,6 @@ public interface CartService {
 
 	public List<CartItem> getCartItemsForUser(int userId);
 
+	public void removeCartItemsForUser(int userId);
+
 }

@@ -1,5 +1,6 @@
 package com.avizva.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -24,6 +25,9 @@ public class CartItem {
 	private int quantity;
 
 	private double totalPrice;
+
+	@Column(insertable = false, columnDefinition = "boolean default false")
+	private boolean orderProcessed;
 
 	public int getId() {
 		return id;
@@ -63,6 +67,14 @@ public class CartItem {
 
 	public void setTotalPrice(double totalPrice) {
 		this.totalPrice = totalPrice;
+	}
+
+	public boolean isOrderProcessed() {
+		return orderProcessed;
+	}
+
+	public void setOrderProcessed(boolean orderProcessed) {
+		this.orderProcessed = orderProcessed;
 	}
 
 	@Override
