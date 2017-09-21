@@ -20,7 +20,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.avizva.model.User;
 import com.avizva.pojo.SecurityQuestions;
-import com.avizva.pojo.UserType;
 import com.avizva.service.MailService;
 import com.avizva.service.UserService;
 
@@ -35,7 +34,7 @@ public class UserController {
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-		SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		binder.registerCustomEditor(Date.class, "birthDate", new CustomDateEditor(format, false));
 	}
 
@@ -44,11 +43,6 @@ public class UserController {
 		int id=(Integer) session.getAttribute("userId");
 		session.setAttribute("user", userService.getUser(id));
 		return new ModelAndView("userProfile");
-	}
-
-	@RequestMapping("/userDeactivate")
-	public ModelAndView userDeactivation() {
-		return new ModelAndView("deactivate");
 	}
 	
 	
@@ -62,15 +56,15 @@ public class UserController {
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public ModelAndView addUser(@Valid @ModelAttribute User user, BindingResult result) {
-		UserType role = UserType.ROLE_USER;
-		user.setUserType(role);
+		System.out.println(result.getAllErrors());
+		System.out.println(user);
 		User savedUser = userService.saveUser(user);
 		if (savedUser == null) {
 			return new ModelAndView("error");
 		}
 		mailService.sendMail(savedUser.getEmail(), "Thanks for registration",
 				"Thank you for registring on our site. We look forward to serve you in the future");
-		return new ModelAndView("redirect:/login");
+		return new ModelAndView("redirect:/").addObject("user", savedUser);
 	}
 
 	@RequestMapping(value = "/forgotPasswordUser", method = RequestMethod.POST)
@@ -94,6 +88,7 @@ public class UserController {
 		int userId = (Integer) session.getAttribute("userId");
 		User updatedUser = userService.updateUserPasswordWithForgot(userId, securityQuestionId, securityAnswer,
 				password);
+		System.out.println(updatedUser);
 		if (updatedUser == null) {
 			return new ModelAndView("forgotPasswordForm")
 					.addObject("securityQuestions", SecurityQuestions.securityQuestions).addObject("result", "failure")
@@ -113,12 +108,13 @@ public class UserController {
 		else
 		{
 			int id=(Integer) session.getAttribute("userId");
+			System.out.println(id);
 			boolean flag=userService.deactivateUser(id);
 			if (!flag) {
 				return new ModelAndView("error");
 			}
 			else
-				return new ModelAndView("redirect:/userLogout");
+				return new ModelAndView("redirect:/logout");
 		}
 		
 	}

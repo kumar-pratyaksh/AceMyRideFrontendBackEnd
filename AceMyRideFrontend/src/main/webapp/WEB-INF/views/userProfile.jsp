@@ -31,9 +31,7 @@
 .fa-credit-card-alt {
   color: #EBA219;
 }
-.fa-ban{
-color: red;
-}
+
 .fa {
   size: 20px;
 }
@@ -154,24 +152,15 @@ color: red;
             <i class="fa fa-credit-card-alt" aria-hidden="true"></i>Payment
             Options
           </div>
-          <c:if test="${userRole == 'ROLE_ADMIN'}">
-	        <div class="general menu-item" data-target="adminP">
-	            <i class="fa fa-columns" aria-hidden="true"></i>
-	            Admin Panel
-	          </div>
-          </c:if>
-	      <div class="general menu-item" data-target="deactivatePage">
-	        <i class="fa fa-ban" aria-hidden="true"></i>
-	            Deactivate Account 
-	      </div>
-		  
+
         </div>
       </div>
 
 
       <div class="col-md-9 contents">
 
-		
+
+
         <div class="content-item active" data-target="details">
 
           <div class="content-head row">Your Info</div>
@@ -275,39 +264,9 @@ color: red;
 
           </form>
         </div>
-        <c:if test="${userRole == 'ROLE_ADMIN'}">
-	        
-        <div class="content-item" data-target="adminP">
-
-          <div class="content-head row">Admin Page</div>
-
-          
-            <div class="view row text-center">
-              <br><h2 style="font-size: 25px;">Are you sure you want to login as admin ?</h2><br>
-              <form action="adminPage" method="post">
-				<input type="submit" class="btn btn-success btn-lg" value="Confirm">
-				</form>
-				
-            </div>
-	
-
-		</div>
-		</c:if>
-		<div class="content-item" data-target="deactivatePage">
-
-          <div class="content-head row">Account Deactivate</div>
-
-          
-            <div class="view row text-center">
-              <br><h2 style="font-size: 25px;">Are you sure you want to deactivate your account ?</h2><br>
-              <form action="deactivate" method="post">
-				<input type="submit" class="btn btn-success btn-lg" value="Confirm">
-				</form>
-				
-            </div>
 
 
-		</div>
+
       </div>
     </div>
   </div>
