@@ -119,12 +119,16 @@ background-color: #f5f1ed;
         <div class="panel panel-body">
           <div class="row">
             <div class="col-lg-12">
-              <form id="billing-form" action="doPayment" method="post" role="form">
+              <form id="how-form" action="doPayment" method="post" role="form">
                 <h2>Please provide Billing Address</h2>
 
+                  <input type="hidden" name="address" value="{{newaddress}}">
+                  <input type="hidden" name="city" value="{{newcity}}">
+                  <input type="hidden" name="country" value="{{newcountry}}">
+                  <input type="hidden" name="pin" value="{{newpin}}">
+             <input type="hidden" name="id" class="form-control" value="{{Id}}">
                   
-                  
-                  <input type="hidden" name="paymentMode" value="paymentMode">
+                  <input type="hidden" name="paymentMode" value="{{paymentMode}}">
                   <input type="hidden" name="orderId" value="{{orderId}}">
                  <div class="form-group"> 
                   <select style="width:100%; height:35px;" id="howTo" name="howTo">
@@ -140,15 +144,16 @@ background-color: #f5f1ed;
                </form>
               <div class="newAddress" id="newAddress" hidden>
               
-              <form id="billing-form" action="doPayment" method="post" role="form">
+              <form id="new-form" action="doPayment" method="post" role="form">
               <h2>Address details</h2>
                <div class="row">
                   <div class="col-md-12">
+                  <input type="hidden" name="id" class="form-control" value="{{Id}}">
                   <input type="hidden" name="howTo" >
-                  <input type="hidden" name="paymentMode" value="paymentMode">
+                  <input type="hidden" name="paymentMode" value="{{paymentMode}}">
                   <input type="hidden" name="orderId" value="{{orderId}}">
                   <div class="form-group">
-                    <textarea name="address" id="address" class="form-control" placeholder="Enter your address...." rows="3" value=""></textarea>
+                    <textarea name="address" id="address" class="form-control" placeholder="Enter your address...." rows="3" value="" ng-model="newaddress"></textarea>
                   </div>
                   </div>
                </div>
@@ -156,17 +161,17 @@ background-color: #f5f1ed;
                  <div class="row">
                   <div class="col-md-4">
                   <div class="form-group">
-                    <input type="text" name="city" id="city" class="form-control" placeholder="City" value="">
+                    <input type="text" name="city" id="city" class="form-control" placeholder="City" value="" ng-model="newcity">
                   </div>
                   </div>  
                   <div class="col-md-4">
                   <div class="form-group">
-                    <input type="text" name="country" id="country" class="form-control" placeholder="Country" value="">
+                    <input type="text" name="country" id="country" class="form-control" placeholder="Country" value="" ng-model="newcountry">
                   </div>
                   </div> 
                   <div class="col-md-4">
                   <div class="form-group">
-                    <input type="text" name="pin" id="pin" class="form-control" placeholder="PIN Code" value="">
+                    <input type="text" name="pin" id="pin" class="form-control" placeholder="PIN Code" value="" ng-model="newpin">
                   </div>
                   </div>                 
                  </div>
@@ -176,13 +181,19 @@ background-color: #f5f1ed;
                 </div>
 
                 <div class="oldAddress" id="oldAddress" hidden>
-                <form id="billing-form" action="doPayment" method="post" role="form">
+                <form id="old-form" action="doPayment" method="post" role="form">
               <h2>Address details</h2>
                <div class="row">
                   <div class="col-md-12">
                   <input type="hidden" name="howTo" >
-                  <input type="hidden" name="paymentMode" value="paymentMode">
+                  <input type="hidden" name="paymentMode" value="{{paymentMode}}">
                   <input type="hidden" name="orderId" value="{{orderId}}">
+                  
+                  <input type="hidden" name="address" value="{{newaddress}}">
+                  <input type="hidden" name="city" value="{{newcity}}">
+                  <input type="hidden" name="country" value="{{newcountry}}">
+                  <input type="hidden" name="pin" value="{{newpin}}">
+                  
                   <div class="form-group">
                     <textarea name="address" id="addressOld" class="form-control"  rows="3"  readonly>{{AddressLine}}</textarea>
                   </div>
@@ -228,6 +239,7 @@ background-color: #f5f1ed;
 
 
   <div class="container-fluid">
+  <form id="payment-form" action="doPayment"  method="post" role="form">
  <div class="row"><label></label></div>
    <div class="row">
     <div class="col-md-6 col-md-offset-3">
@@ -242,6 +254,7 @@ background-color: #f5f1ed;
           </div>
         </div>
         <div class="panel panel-body">
+        
           <div class="row">
             <div class="col-lg-12">
                 
@@ -253,11 +266,16 @@ background-color: #f5f1ed;
                     
                 </div> 
      
-      			<form id="billing-form" action="doPayment" method="post" role="form">
+      			
 				<div class="row">
-                  
+                  <input type="hidden" name="id" class="form-control" value="{{Id}}">
                   <input type="hidden" name="howTo" > 
                   <input type="hidden" name="orderId" value="{{orderId}}">
+                  <input type="hidden" name="address" value="{{newaddress}}">
+                  <input type="hidden" name="city" value="{{newcity}}">
+                  <input type="hidden" name="country" value="{{newcountry}}">
+                  <input type="hidden" name="pin" value="{{newpin}}">
+                  
                  <div class="col-md-4">  
                  <div class="form-group">                    
                     <input type="radio" name="paymentMode" value="2" ng-model="paymentMode"> Cash On Delivery
@@ -275,8 +293,11 @@ background-color: #f5f1ed;
                     <input type="radio" name="paymentMode" value="3" ng-model="paymentMode"> Netbanking
                  </div>
                  </div>  
-                </div>     
-  				</form>
+                </div>  
+                
+                
+                   
+  				
 
                  <div ng-switch="paymentMode">
                   <div ng-switch-when="2">
@@ -372,6 +393,7 @@ background-color: #f5f1ed;
       </div>
     </div>
   </div>
+  </form>
 </div>
 
 
@@ -387,8 +409,9 @@ background-color: #f5f1ed;
     document.getElementById("oldAddress").hidden = this.value == 'new' || this.value == 'shipping';
     $('input[name=howTo]').val(this.value);
     
+  }
     
-}
+    
 
 var app = angular.module('myApp', []);
 
