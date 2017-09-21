@@ -62,4 +62,12 @@ public class CartController {
 		return new ModelAndView("redirect:cart");
 	}
 
+	@RequestMapping(value = "checkout", method = { RequestMethod.POST, RequestMethod.GET })
+	public ModelAndView showCheckout(@RequestParam(required = false) Integer productId,
+			@RequestParam(required = false) Integer quantity, HttpSession session) {
+		return new ModelAndView("checkout").addObject("listCartItems",
+				JsonUtil.convertToJson(cartService.getCartItemsForUser((Integer) session.getAttribute("userId"))));
+
+	}
+
 }
