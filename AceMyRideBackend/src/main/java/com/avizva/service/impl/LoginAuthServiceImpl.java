@@ -21,20 +21,21 @@ public class LoginAuthServiceImpl implements LoginAuthService{
 	{
 		LOGGER.info("Authenticating user with email:" + email);
 		User user=userDao.view(email);
-
-
-		if (user == null)
+		
+		if(user==null)
 			return null;
-
-		if (!(user.getPassword()).equals(password)) {
+		
+		if(!(user.getPassword()).equals(password))
+		{
 			return null;
 		}
-
-		if (user.isEnabled() == false) {
-		userDao.reactivate(user.getId());
+		
+		if(user.isEnabled()==false){
+			userDao.reactivate(user.getId());
 		}
-
+		
 		return user;
+			
 	}
 	
 	

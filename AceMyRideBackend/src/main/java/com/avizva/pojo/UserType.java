@@ -9,6 +9,6 @@ package com.avizva.pojo;
 
 public enum UserType {
 
-	ROLE_ADMIN, ROLE_USER;
+	ADMIN, USER;
 
 }

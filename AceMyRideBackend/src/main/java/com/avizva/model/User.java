@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
@@ -63,7 +64,7 @@ public class User {
 	private Boolean enabled;
 
 	@Enumerated(EnumType.STRING)
-	@Column(name = "role")
+	@Column(name = "user_type")
 	private UserType userType;
 
 	public int getId() {
