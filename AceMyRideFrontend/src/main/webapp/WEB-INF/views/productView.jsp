@@ -4,6 +4,7 @@
 
 <style>
 .flex {
+
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -27,7 +28,6 @@
   max-width:250px;
   height:470px;
  
-
 }
 
 .single:hover{
@@ -213,7 +213,6 @@ img {
 
 <div class="main-content" ng-app="myApp" ng-controller="myCtrl">
 
-
 <div class="container-fluid">
 
 <div class="row sortby">
@@ -279,6 +278,7 @@ var app = angular.module('myApp', []);
  $scope.categoryName= ${categoryName};
 
  $scope.orderByMe=function(x){
+
 		$scope.myOrderBy=x;
 	}
  

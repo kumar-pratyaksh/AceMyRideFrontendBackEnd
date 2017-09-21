@@ -1,6 +1,7 @@
 package com.avizva.controller;
 
 import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -152,5 +153,4 @@ public class AdminController {
 		return new ModelAndView("adminPanel").addObject("listSuppliers", supplierService.getAllSuppliers())
 				.addObject("listCategories", categoryService.getAllCategories()).addObject("listProducts", productService.getAllProducts());
 	}
-
 }
