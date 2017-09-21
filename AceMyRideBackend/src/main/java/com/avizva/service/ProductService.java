@@ -21,7 +21,7 @@ public interface ProductService {
 	public Product getProduct(String productId);	
 	
 	public List<Product> getAllProducts();
-
+	
 	public List<Product> getProductUsingCategory(String categoryName);
 
 }

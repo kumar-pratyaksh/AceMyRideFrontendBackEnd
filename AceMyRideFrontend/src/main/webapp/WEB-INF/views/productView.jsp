@@ -4,217 +4,270 @@
 
 <style>
 .flex {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 50px; 
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 50px; 
+  
 
 }
 
+
+
 .single{
-border-radius: 5px;
-border: none;
-  
-  box-shadow: 0px 0px 49px 14px rgba(188,190,194,0.39);
+	border-radius: 5px;
+	border: none;
+  background:#FCF5ED;
+  box-shadow: 0px 0px 49px 14px rgba(188,190,194,0.39);
 
-  overflow: hidden;
-  transform: scale(1);
-  transition: transform 300ms ease-out;
+  overflow: hidden;
+  transform: scale(1);
+  transition: transform 300ms ease-out;
  
-  flex-shrink: 0;
-
+  max-width:250px;
+  height:470px;
+ 
 }
 
 .single:hover{
-transform: scale(1.2);
-  transition: transform 300ms ease-out;
+	transform: scale(1.2);
+  transition: transform 300ms ease-out;
 
-  
-  box-shadow: 0px 0px 70px 20px rgba(188,190,194,0.75);
+  
+  box-shadow: 0px 0px 70px 20px rgba(188,190,194,1);
 }
 
 .addThis{
-transform: scale(1);
-  transition: transform 300ms ease-out;
+	transform: scale(1);
+  transition: transform 300ms ease-out;
+  
 
-  }
+  }
 
 .single:hover .addThis{
-transform: scale(1.2);
-  transition: transform 300ms ease-out;
+	transform: scale(1.2);
+  transition: transform 300ms ease-out;
 }
 
 .flex > section {
-  align-items: center;
-  display: flex;
-  flex: 1 1 0;
-  flex-direction: column;
-  text-align: center;
-  max-width: 400px;
+  align-items: center;
+  display: flex;
+  flex: 1 1 0; 
+  flex-direction: column;
+  text-align: center;
+  width: 270px;
 }
 
 .flex > section > p {
-  flex-grow: 1;
+  flex-grow: 1;
 }
 
-@media (max-width: 500px) {
-  .flex > section {  
-    max-width: 250px;
-  }
+@media (max-width: 1600px) {
+  .flex > section {  
+    max-width: 270px;
+  }
 }
 
 .flex ul {
-  display: flex;
-  justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .flex aside {
-  width: 100%;
+  width:100%;
 }
 
 img {
-  width: 400px;
-  border-radius: 2px;
+  width: 400px;
+  border-radius: 2px;
 }
 
-@media (max-width: 500px) {
-  img{
-    width: 250px;
-  }
+@media (max-width: 1600px) {
+  img{
+    width: 250px;
+    height: 250px;
+  }
 }
 
-h2 {
-  font-size: 25px;
+.container-fluid p{
+	font-size: 25px;
+  font-weight:700;
 }
+
+.flex h2 {
+  font-size: 25px;
+  font-weight:700;
+  margin:10px;
+}
+
+.flex h3 {
+  color:#909792;
+  font-size: 25px;
+  font-weight:400;
+  margin:10px;
+}
+
+
 
 .flex > section {
-  background: #fff;
-  padding: 1em;
-  margin: 0.5em;
-  border-radius: 4px;
+  background: #fff;
+  padding: 1em;
+  margin: 0.5em;
+  border-radius: 4px;
 }
 
 .flex button {
-  background-color: #dad2bc;
-  
-  border: 0;  
-  border-radius: 4px;
-  cursor: pointer;
-  color: #252323;  
-  font-weight: bold;
-  font-size: 15px;
-  padding: 1em 2em;
-  
-  display: block;
-  width: 100%;
+  background-color: #dad2bc;
+  
+  border: 0;  
+  border-radius: 4px;
+  cursor: pointer;
+  color: #252323;  
+  font-weight: bold;
+  font-size: 15px;
+  padding: 1em 2em;
+  margin-top:10px;
+  display: block;
+  width: 100%;
 }
 
 .flex button:hover {
-  background-color: #252323;
-  color:#dad2bc;
+  background-color: #252323;
+  color:#dad2bc;
 }
 
 .sort{
-background-color: #dad2bc;
-  
-  border: 0;  
-  border-radius: 4px;
-  cursor: pointer;
-  color: #252323;  
-  font-weight: bold;
-  font-size: 15px;
-  margin-left: 20px;
-  padding: 0.5em 1.5em;
-  
+	background-color: #dad2bc;
+  
+  border: 0;  
+  border-radius: 4px;
+  cursor: pointer;
+  color: #252323;  
+  font-weight: bold;
+  font-size: 15px;
+  margin-right:20px;
+  padding: 0.2em 0.8em;
+  
 }
 
 .sortby{
-margin-top:15px;
-font-size:20px;
+	margin-top:15px;
+	font-size:25px;
+	font-weight:300;
 }
 
 .sort:hover{
-background-color: #252323;
-  color:#dad2bc;
+	background-color: #252323;
+  color:#dad2bc;
 }
 
 .flex ul {
-  list-style-type: none;
-  padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
-.flex li {
-  background: #eee;
-  font-weight: 700;
-  padding: 0.3em 0.6em;
-  border-radius: 1em;
+.link{
+	font-weight: 100;
+  padding: 0.3em 0.6em;
+ 
 }
 
 .not-in-stock{
-background-color: #eee;
-  font-weight: 700;
-  padding: 0.3em 0.6em;
-  border-radius: 1em;
-  color:#BC2D09;
+	background-color: #eee;
+  font-weight: 700;
+  padding: 0.3em 0.6em;
+  border-radius: 1em;
+  color:#BC2D09;
 }
 
 .in-stock{
-background: #eee;
-  font-weight: 700;
-  padding: 0.3em 0.6em;
-  border-radius: 1em;
-  color:#057423;
+	background: #eee;
+  font-weight: 700;
+  padding: 0.3em 0.6em;
+  border-radius: 1em;
+  color:#057423;
 }
 
 .glyphicon-shopping-cart{
-font-size:20px;
+	font-size:20px;
 }
+
+
+
+.flex p{
+	font-size: 15px;
+  font-weight:200;
+  margin:10px;
+  text-align:center;
+  height:42px;
+}
+
+.glyphicon-search{
+	width:25px;
+}
+
+
 </style>
 
 
 <div class="main-content" ng-app="myApp" ng-controller="myCtrl">
-<h1>{{categoryName}}</h1>
 
-<div class="container-fluid text-center">
- <div class="row">
-  
-    <input type="text" ng-model="search">
-    <span class="glyphicon glyphicon-search"></span></input>
-  
- </div>
+<div class="container-fluid">
+
+<div class="row sortby">
+  
+  <div class="col-md-3">
+   <p>{{categoryName}}	</p>
+  </div> 
+   
+<div class="input-group col-md-4">
+    <span class="input-group-addon">
+        <i class="glyphicon glyphicon-search"></i>
+    </span>
+    <input type="text"  class="form-control" ng-model="search" placeholder="Search for a particular product.."/>
+</div>
+  </div>
  
- <div class="row sortby">
-  
-   Sort By : <button class="sort" ng-click="orderByMe('name')">Name</button>
-             <button class="sort" ng-click="orderByMe('price')">Price</button>
- </div>      
- </div>      
-
-
-<div class="flex" ng-repeat="item in productList| filter:{name:search}|orderBy:myOrderBy">
-    <section class="single">
-    <form action="addToCart" method="post">
-     <input type="hidden" name="productId" id="productID" value="item.id"/>
-     <input type="hidden" name="quantity" id="quantity" value="1"/>
-      <img src="download?fileName={{item.imagePath}}" alt="ProductName"/>
-      <h2>{{item.name}}</h2>
-      <p>{{item.description}}</p>
-      <aside>
-        <ul>
-          <li>Price: {{item.price}} <i class="fa fa-rupee"></i></li>
-           
-          <li ng-if="item.inStock >= 0" class="in-stock">In Stock</li>
-           
-           
-          <li ng-if="item.inStock === 0 " class="not-in-stock">No Stock</li>
-           
-        </ul>
-        <button type="submit" class="addThis"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</button>
-      </aside>
-        </form>
-    </section>
+  <div class="row pull-right">
+   Arrange By <button class="sort" ng-click="orderByMe('name')">Name</button>
+             <button class="sort" ng-click="orderByMe('price')">Price</button>
+  </div>
+      
+ </div>      				
+			
+<div class="flex">
+<div class="list" ng-repeat="item in productList| filter:{name:search}|orderBy:myOrderBy">
+ <section>
+    <div class="single">
+    	<form action="addToCart" method="post">
+    	 <input type="hidden" name="productId" id="productID" value="{{item.id}}"/>
+    	 <input type="hidden" name="quantity" id="quantity" value="1"/>
+      <img src="download?fileName={{item.imagePath}}" alt="ProductName"/>
+      <aside>
+       <ul>
+        <li><h2>{{item.name}}</h2></li>
+        <li><h3>{{item.price}}<sup>&#8377</sup></h3></li>
+       </ul>
+      </aside>
+      <p>{{item.description}}</p>
+      <aside>
+        <ul>
+          <li class="link"> <a href="productUser?name={{item.name}}">View more details</a></li>
+           
+          <li ng-if="item.inStock != 0" class="in-stock">In Stock</li>
+           
+           
+          <li ng-if="item.inStock ===0 " class="not-in-stock">No Stock</li>
+           
+        </ul>
+        <button type="submit" class="addThis"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</button>
+      </aside>
+        </form>
+        </div>
+    </section>
 </div> 
-
+</div>
 </div>
 
 <script>
@@ -225,8 +278,9 @@ var app = angular.module('myApp', []);
  $scope.categoryName= ${categoryName};
 
  $scope.orderByMe=function(x){
-$scope.myOrderBy=x;
-}
+
+		$scope.myOrderBy=x;
+	}
  
  });
 </script>
