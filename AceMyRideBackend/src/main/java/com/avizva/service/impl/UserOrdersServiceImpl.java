@@ -78,14 +78,14 @@ public class UserOrdersServiceImpl implements UserOrdersService {
 		payment = paymentService.savePayment(payment);
 		orders.setPayment(payment);
 		if (isNew) {
-			billingAddress.setUser(orders.getUser());
+			billingAddress.setUserId(orders.getUserId());
 			billingAddress = addressService.saveAddress(billingAddress);
 		} else if (billingAddress == null) {
 			billingAddress = orders.getShippingAddress();
 		}
 		productService.removeProductFromStock(orders.getItems());
 		orders.setOrderAmount(getOrderAmount(orders.getItems()));
-		orders.setBillingAddress(billingAddress);
+		orders.setBillingAddressId(orders.getBillingAddressId());
 		orders.setOrderDate(new Date());
 		return userOrdersDao.save(orders);
 	}

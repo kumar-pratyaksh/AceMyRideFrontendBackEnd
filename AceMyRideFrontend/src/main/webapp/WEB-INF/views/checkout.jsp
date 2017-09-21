@@ -284,8 +284,13 @@ background-color: #f5f1ed;
 var app = angular.module('myApp', []);
 
  app.controller('myCtrl',function($scope){
- $scope.addressList=${addressList};
- $scope.howTo="empty";
+ 	<c:if test="${empty addressList}">
+	 $scope.addressList=[];
+ 	</c:if>
+ 	<c:if test="${not empty addressList}">
+	 $scope.addressList=${addressList};
+	</c:if>
+	 $scope.howTo="empty";
 
  $scope.BindSelectedData=function(addresss){
     $scope.Id=addresss.id
