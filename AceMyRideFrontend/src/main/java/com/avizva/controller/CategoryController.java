@@ -12,6 +12,7 @@ import com.avizva.model.Product;
 import com.avizva.service.ProductService;
 import com.avizva.util.JsonUtil;
 
+
 @Controller
 public class CategoryController {
 
@@ -29,5 +30,5 @@ public class CategoryController {
 				categoryName);
 
 	}
-
+	
 }
